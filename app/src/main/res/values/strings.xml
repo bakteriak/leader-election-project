@@ -1,6 +1,35 @@
 <resources>
     <string name="app_name">Leader Election Game</string>
 
+    <!-- Main Activity String -->
+    <string name="reside_menu">Main Menu</string>
+    <string name="permission_message">Please enable all permission</string>
+
+    <!-- Research Paper String -->
+    <string name="button_next_research_paper">Next</string>
+    <string name="button_previous_research_paper">Previous</string>
+
+    <!-- Home Fragment String -->
+    <string name="text_swipe_right_left_to_open_menu">Swipe right/left to open menu</string>
+
+    <!-- Step By Step Fragment String -->
+    <string name="button_next_step_by_step">Next</string>
+    <string name="button_previous_step_by_step">Previous</string>
+    <string name="button_reset_step_by_step">Reset</string>
+
+    <string name="title_activity_step_by_step">StepByStepActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="text_about">text</string>
+    <string name="about_textview">about_TextView</string>
+
+    <!-- Leader Game Fragment String -->
+
+
+    <!-- About Fragment String -->
+
+
+    <!-- Settings Fragment String -->
+
+
 </resources>

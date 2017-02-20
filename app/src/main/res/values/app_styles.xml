@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LeaderElectionNodeStyle">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textColor">@color/nodeText</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:background">@drawable/node_bg</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="LeaderElectionFontStyleCaption">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="LeaderElectionFontStyleInfo">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="LeaderElectionButtonStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/btn_shape</item>
+    </style>
+
+</resources>
