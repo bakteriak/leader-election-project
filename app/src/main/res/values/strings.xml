@@ -16,6 +16,13 @@
     <string name="button_next_step_by_step">Next</string>
     <string name="button_previous_step_by_step">Previous</string>
     <string name="button_reset_step_by_step">Reset</string>
+    <string name="button_start_over_step_by_step">Start over</string>
+
+    <string name="popup_node_winner">Winner: </string>
+    <string name="popup_node_referee">Referee: </string>
+    <string name="popup_node_candidates_to_referee">Referee selected by: </string>
+    <string name="popup_node_participant">Participant: </string>
+    <string name="popup_node_id">Node id: </string>
 
     <string name="title_activity_step_by_step">StepByStepActivity</string>
     <string name="dummy_button">Dummy Button</string>

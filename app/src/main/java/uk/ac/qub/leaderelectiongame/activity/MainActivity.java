@@ -1,5 +1,4 @@
 package uk.ac.qub.leaderelectiongame.activity;
-import android.Manifest;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ResideMenuItem itemStepByStep;
     private ResideMenuItem itemLeaderGame;
     private ResideMenuItem itemAbout;
-    private ResideMenuItem itemSettings;
+    private ResideMenuItem itemAdvanced;
     private Context mContext;
     private View buttonRender;
     private LinearLayout container;
@@ -73,24 +72,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //adding menu items
         itemHome = new ResideMenuItem(this, R.drawable.icon_home, "Home");
         itemResearchPaper = new ResideMenuItem(this,R.drawable.icon_research,"Research Paper");
-        itemStepByStep = new ResideMenuItem(this,R.drawable.icon_step_by_step,"Step By Step");
-        itemLeaderGame = new ResideMenuItem(this,R.drawable.icon_leader_game,"Leader Game");
         itemAbout = new ResideMenuItem(this,R.drawable.icon_about,"About");
-        itemSettings = new ResideMenuItem(this, R.drawable.icon_settings, "Settings");
+        itemLeaderGame = new ResideMenuItem(this,R.drawable.icon_leader_game,"Leader Game");
+        itemStepByStep = new ResideMenuItem(this,R.drawable.icon_step_by_step,"Step By Step");
+        itemAdvanced = new ResideMenuItem(this, R.drawable.icon_advanced, "Advanced");
 
         itemHome.setOnClickListener(this);
         itemResearchPaper.setOnClickListener(this);
+        itemAbout.setOnClickListener(this);
         itemLeaderGame.setOnClickListener(this);
         itemStepByStep.setOnClickListener(this);
-        itemAbout.setOnClickListener(this);
-        itemSettings.setOnClickListener(this);
+        itemAdvanced.setOnClickListener(this);
 
         resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemResearchPaper,ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemStepByStep,ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemAbout,ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemLeaderGame,ResideMenu.DIRECTION_RIGHT);
-        resideMenu.addMenuItem(itemAbout,ResideMenu.DIRECTION_RIGHT);
-        resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemStepByStep,ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemAdvanced, ResideMenu.DIRECTION_RIGHT);
 
         //you can disable a side by -->
         //   resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
@@ -131,13 +130,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             changeFragment(new ResearchPaperFragment());
             resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
             resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_LEFT);
-        }else if(v == itemStepByStep){
-            changeFragment(new StepByStepFragment());
-        }else if(v == itemLeaderGame){
-            changeFragment(new LeaderGameFragment());
         }else if(v == itemAbout){
             changeFragment(new AboutFragment());
-        }else if(v == itemSettings){
+        }else if(v == itemLeaderGame){
+            changeFragment(new LeaderGameFragment());
+        }else if(v == itemStepByStep){
+            changeFragment(new StepByStepFragment());
+        }else if(v == itemAdvanced){
             changeFragment(new SettingsFragment());
         }
 
@@ -157,3 +156,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return resideMenu;
     }
 }
+

@@ -19,17 +19,18 @@ public class LeaderElectionAlgorithm {
         if (participantsNumber <= 0) {
             return  result;
         }   //if
-        if (participantsNumber > Consts.MAX_ID) {
+        int maxId = calculateMaxId(participantsNumber);
+        if (participantsNumber > maxId) {
             throw new LeaderElectionException(Consts.ALGORITHM_ERROR_TOO_MANY_PARTICIPANTS);
         }   //if
         Set<Integer> assignedIds = new HashSet<>();
         for (int i = 0; i < participantsNumber; i++) {
-            int newId = random.nextInt(Consts.MAX_ID) + 1;
+            int newId = random.nextInt(maxId) + 1;
             while (true) {
                 if (!assignedIds.contains(newId)) {
                     break;
                 }
-                newId = random.nextInt(Consts.MAX_ID) + 1;
+                newId = random.nextInt(maxId) + 1;
             }
             assignedIds.add(newId);
             result.add(new Node(newId));
@@ -45,12 +46,18 @@ public class LeaderElectionAlgorithm {
         if (allNodes.isEmpty()) {
             return result;
         }   //if
-        for (int i = 0; i < allNodes.size(); i++) {
-            Node node = allNodes.get(i);
-            ///prob 2 log n/n = 2 for 10 contenders
-            node.setTakingPart(((random.nextInt(Consts.MAX_ID) + 1) % 2) == 0);
-            result.add(node);
-        }
+        boolean atLeastOneParticipant = false;
+        while (!atLeastOneParticipant) {
+            for (int i = 0; i < allNodes.size(); i++) {
+                Node node = allNodes.get(i);
+                ///prob 2 log n/n = 2 for 10 contenders
+                node.setTakingPart(random.nextDouble() <= calculateParticipantProbability(allNodes.size()));
+                if (node.isTakingPart()) {
+                    atLeastOneParticipant = true;
+                }   //if
+                result.add(node);
+            }
+        }   //while
         return result;
     }
 
@@ -182,11 +189,42 @@ public class LeaderElectionAlgorithm {
     }
 
     //each node chooses ceil (sqrt (n log n)) referees = 4 or 2 * ceil (sqrt (n log n)) referees = 8 referees
-    private static int calculateRefereesAmount(int networkSize) {
+    public static int calculateRefereesAmount(int networkSize) {
         if (networkSize <= 0) {
             return 0;
         }
         return 2 * ((int) Math.ceil(Math.sqrt((double) networkSize)));
+    }
+
+    //probability of becoming participant - 2 log n/n
+    public static double calculateParticipantProbability(int networkSize) {
+        if (networkSize <= 0) {
+            return 0;
+        }
+        return ((2 * Math.log10(networkSize)) / networkSize);
+    }
+
+    //max random id = n^4
+    public static int calculateMaxId(int networkSize) {
+        if (networkSize <= 0) {
+            return 0;
+        }
+        return (int)Math.pow(networkSize, Consts.MAX_ID_POWER);
+    }
+
+    public static String findWinnerIdText(List<Node> allNodes) {
+        if (allNodes == null) {
+            return "--";
+        }   //if
+        if (allNodes.size() == 0) {
+            return "--";
+        }   //if
+        for (Node node: allNodes) {
+            if (node.isWinner()) {
+                return String.valueOf(node.getId());
+            }
+        }   //for
+        return "--";
     }
 
 }
