@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@color/nodeBase"
+             android:padding="15dp">
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textStyle="bold"
+                  android:text="@string/popup_node_id"
+                  android:padding="5dp"
+                  android:gravity="right"
+                  android:textIsSelectable="false" />
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:id="@+id/txtPopupNodeId"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="5dp"
+                  android:textIsSelectable="false" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textStyle="bold"
+                  android:text="@string/popup_node_participant"
+                  android:gravity="right"
+                  android:padding="5dp"
+                  android:textIsSelectable="false" />
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:id="@+id/txtPopupNodeParticipant"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="5dp"
+                  android:textIsSelectable="false" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textStyle="bold"
+                  android:text="@string/popup_node_candidates_to_referee"
+                  android:gravity="right"
+                  android:padding="5dp"
+                  android:textIsSelectable="false" />
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:id="@+id/txtPopupNodeCandidatesToReferee"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="5dp"
+                  android:textIsSelectable="false" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textStyle="bold"
+                  android:text="@string/popup_node_referee"
+                  android:gravity="right"
+                  android:padding="5dp"
+                  android:textIsSelectable="false" />
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:id="@+id/txtPopupNodeReferee"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="5dp"
+                  android:textIsSelectable="false" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textStyle="bold"
+                  android:text="@string/popup_node_winner"
+                  android:gravity="right"
+                  android:padding="5dp"
+                  android:textIsSelectable="false" />
+
+        <TextView style="@style/LeaderElectionFontPopupNode"
+                  android:id="@+id/txtPopupNodeWinner"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="5dp"
+                  android:textIsSelectable="false" />
+    </TableRow>
+
+</TableLayout>

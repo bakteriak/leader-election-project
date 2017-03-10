@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.special.ResideMenu.ResideMenu;
@@ -15,7 +16,7 @@ import uk.ac.qub.leaderelectiongame.fragment.HomeFragment;
 import uk.ac.qub.leaderelectiongame.fragment.LeaderGameFragment;
 import uk.ac.qub.leaderelectiongame.R;
 import uk.ac.qub.leaderelectiongame.fragment.ResearchPaperFragment;
-import uk.ac.qub.leaderelectiongame.fragment.SettingsFragment;
+import uk.ac.qub.leaderelectiongame.fragment.AdvancedFragment;
 import uk.ac.qub.leaderelectiongame.fragment.StepByStepFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(v == itemStepByStep){
             changeFragment(new StepByStepFragment());
         }else if(v == itemAdvanced){
-            changeFragment(new SettingsFragment());
+            changeFragment(new AdvancedFragment());
         }
 
         resideMenu.closeMenu();

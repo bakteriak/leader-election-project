@@ -1,5 +1,7 @@
 package uk.ac.qub.leaderelectiongame.consts;
 
+import java.text.DecimalFormat;
+
 public class Consts {
 
     public static final int MAX_ID_POWER = 4; //n^4
@@ -28,5 +30,23 @@ public class Consts {
 
     public static final String YES = "Yes";
     public static final String NO = "No";
+
+    public static final int ALGRITHM_PERFORMANCE_ERROR_CODE = -1;
+    public static final int ONE_HUNDRED = 100;
+
+    public static final int ALGRITHM_PERFORMANCE_DEFAULT_NETWORK_SIZE = 10;
+    public static final int ALGRITHM_PERFORMANCE_DEFAULT_ALGORITHM_RUNS = 1;
+
+    public static final DecimalFormat PERCENTAGE_FORMAT = new DecimalFormat("#0.00####");
+    public static final DecimalFormat INTEGER_FORMAT = new DecimalFormat("#,###,###,##0");
+    public static final DecimalFormat SECONDS_FORMAT = new DecimalFormat("#,###,###,###,###,##0");
+
+    public static final String PERFORMANCE_PROGRESS_INFO_INIT_NODES = "Running iteration %d: Initializng network...";
+    public static final String PERFORMANCE_PROGRESS_INFO_GET_PARTICIPANTS = "Running iteration %d: Looking for participants...";
+    public static final String PERFORMANCE_PROGRESS_INFO_GET_REFEREES = "Running iteration %d: Looking for referees...";
+    public static final String PERFORMANCE_PROGRESS_INFO_NOMINATING_WINNERS = "Running iteration %d: Nominating winners...";
+
+    public static final String PERFORMANCE_WAKE_LOCK = "PerformanceWakeLock";
+
 }
 

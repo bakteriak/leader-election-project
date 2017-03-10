@@ -36,7 +36,37 @@
     <!-- About Fragment String -->
 
 
-    <!-- Settings Fragment String -->
-
-
+    <!-- Advanced Fragment String -->
+    <string name="advanced_caption">In this section we`re trying to measure performance of the Randomised Leader Election Algorithm. Please select network size and number of algorithm`s run from lists below and tap Run button to see results.</string>
+    <string name="network_size">Network size:</string>
+    <string name="algorithm_runs">Number of runs:</string>
+    <string name="advanced_select_network_size_prompt">Select network size here</string>
+    <string name="advanced_select_runs_prompt">Select number of algorithm`s run here</string>
+    <string-array name="advanced_network_size_arrays">
+        <item>10</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+        <item>100000</item>
+        <item>1000000</item>
+    </string-array>
+    <string-array name="advanced_algorithm_run_arrays">
+        <item>1</item>
+        <item>10</item>
+        <item>50</item>
+        <item>100</item>
+        <item>1000</item>
+    </string-array>
+    <string name="button_run_performance">Run</string>
+    <string name="min_node_candidates_percentage">Min candidates %:</string>
+    <string name="max_node_candidates_percentage">Max candidates %:</string>
+    <string name="avg_node_candidates_percentage">Avg candidates %:</string>
+    <string name="referees_number">Referees number:</string>
+    <string name="total_algorithm_run_time">Total time:</string>
+    <string name="min_algorithm_run_time">Min algorithm time:</string>
+    <string name="max_algorithm_run_time">Max algorithm time:</string>
+    <string name="avg_algorithm_run_time">Avg algorithm time:</string>
+    <string name="improper_algorithm_params">Algorithm`s input parameters do not seem right. Please choose proper values from the lists.</string>
+    <string name="performance_test_in_progress">Performance test in progress. Please wait a moment to see results.</string>
+    <string name="performance_test_error">Performance test finished with errors. Please try again.</string>
 </resources>

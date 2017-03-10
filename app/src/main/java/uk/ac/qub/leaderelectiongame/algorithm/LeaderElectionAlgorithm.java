@@ -14,8 +14,11 @@ public class LeaderElectionAlgorithm {
 
     private static Random random = new Random();
 
+    private static int candidatesNumber = 0;
+
     public static List<Node> initNodes(int participantsNumber) throws LeaderElectionException {
         List<Node> result = new ArrayList<>();
+        LeaderElectionAlgorithm.candidatesNumber = 0;
         if (participantsNumber <= 0) {
             return  result;
         }   //if
@@ -39,15 +42,16 @@ public class LeaderElectionAlgorithm {
     }
 
     public static List<Node> getParticipants(List<Node> allNodes) {
-        List<Node> result = new ArrayList<>();
         if (allNodes == null) {
-            return result;
+            return new ArrayList<>();
         }   //if
         if (allNodes.isEmpty()) {
-            return result;
+            return new ArrayList<>();
         }   //if
         boolean atLeastOneParticipant = false;
+        List<Node> result = new ArrayList<>();
         while (!atLeastOneParticipant) {
+            result.clear();
             for (int i = 0; i < allNodes.size(); i++) {
                 Node node = allNodes.get(i);
                 ///prob 2 log n/n = 2 for 10 contenders
@@ -58,6 +62,11 @@ public class LeaderElectionAlgorithm {
                 result.add(node);
             }
         }   //while
+        for (Node node: result) {
+            if (node.isTakingPart()) {
+                LeaderElectionAlgorithm.candidatesNumber++;
+            }   //if
+        }   //for
         return result;
     }
 
@@ -95,19 +104,33 @@ public class LeaderElectionAlgorithm {
         if (!samplingNode.isTakingPart()) {
             return allNodes;
         }   //if
+        List<Integer> exclusions = new ArrayList<>();
+        exclusions.add(allNodes.indexOf(samplingNode)); //you cannot choose yourself
         for (int i = 0; i < refereesAmount; i++) {
             //sampling referee/non-referee
-            int randomNodeIndex = random.nextInt(allNodes.size());
+            int randomNodeIndex = getRandomWithExclusion(allNodes.size(), exclusions);
             while (true) {
                 if (checkCanBeReferee(samplingNode, allNodes.get(randomNodeIndex))) {
                     allNodes.get(randomNodeIndex).setReferee(true);
                     allNodes.get(randomNodeIndex).addRefereeElector(samplingNode);
+                    exclusions.add(randomNodeIndex);
                     break;
-                }   //if
-                randomNodeIndex = random.nextInt(allNodes.size());
+                }  //if
+                randomNodeIndex = getRandomWithExclusion(allNodes.size(), exclusions);
             }   //while
         }   //for
         return allNodes;
+    }
+
+    private static int getRandomWithExclusion(int range, List<Integer> exclusions) {
+        if (exclusions == null) {
+            exclusions = new ArrayList<>();
+        }   //if
+        int randomIndex = random.nextInt(range);
+        while(exclusions.contains(randomIndex)) {
+            randomIndex = random.nextInt(range);
+        }   //while
+        return randomIndex;
     }
 
     public static List<Node> getReferees(List<Node> allNodes) {
@@ -225,6 +248,10 @@ public class LeaderElectionAlgorithm {
             }
         }   //for
         return "--";
+    }
+
+    public static int getCandidatesNumber() {
+        return candidatesNumber;
     }
 
 }
