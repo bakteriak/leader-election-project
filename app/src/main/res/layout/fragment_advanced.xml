@@ -1,0 +1,325 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/nodeRefereeBorder"
+              android:paddingLeft="25dp"
+              android:paddingRight="25dp"
+              android:paddingTop="20dp"
+              android:paddingBottom="20dp"
+              tools:context="uk.ac.qub.leaderelectiongame.fragment.AdvancedFragment">
+
+`
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+            <TextView style="@style/LeaderElectionFontStyleInfo"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textIsSelectable="false"
+                      android:text="@string/advanced_caption"
+                      android:paddingBottom="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textIsSelectable="false"
+                          android:text="@string/network_size"
+                          android:paddingBottom="10dp"
+                          android:paddingTop="3dp"
+                          android:layout_marginBottom="14dp"/>
+
+                <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textIsSelectable="false"
+                          android:text="@string/algorithm_runs"
+                          android:paddingBottom="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"                    android:layout_marginRight="3dp"
+                    android:background="@drawable/spinner_bg"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerNetworkSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:prompt="@string/advanced_select_network_size_prompt"
+                        android:spinnerMode="dropdown"/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:src="@drawable/spinner_arrow" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"                    android:layout_marginRight="3dp"
+                    android:background="@drawable/spinner_bg"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <Spinner
+                        android:id="@+id/spinnerAlgorithmRuns"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:prompt="@string/advanced_select_network_size_prompt"
+                        android:spinnerMode="dropdown" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:src="@drawable/spinner_arrow" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/btnRunPerformance"
+                android:text="@string/button_run_performance"
+                style="@style/LeaderElectionButtonStyle" />
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/resultsLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:background="@android:color/white" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/svResults"
+            android:visibility="gone"
+            android:scrollbarThumbVertical="@color/nodeParticipant">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:orientation="horizontal"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/network_size"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/algorithm_runs"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/min_node_candidates_percentage"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/max_node_candidates_percentage"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/avg_node_candidates_percentage"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/referees_number"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/total_algorithm_run_time"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/min_algorithm_run_time"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/max_algorithm_run_time"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/avg_algorithm_run_time"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/winners_number"
+                              android:paddingBottom="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtNetworkSize"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtAlgorithmRuns"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtMinNodeCandidatesPercentage"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtMaxNodeCandidatesPercentage"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtAvgNodeCandidatesPercentage"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtRefereesNumber"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtTotalAlgorithmTime"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtMinAlgorithmTime"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtMaxAlgorithmTime"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtAvgAlgorithmTime"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtWinnersNumber"
+                              android:paddingBottom="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
