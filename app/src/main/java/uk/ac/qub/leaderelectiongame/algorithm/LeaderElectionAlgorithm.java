@@ -15,10 +15,16 @@ public class LeaderElectionAlgorithm {
     private static Random random = new Random();
 
     private static int candidatesNumber = 0;
+    private static int winnersNumber = 0;
+    private static List<Node> referees = new ArrayList<>();
+    private static List<Node> participants = new ArrayList<>();
 
     public static List<Node> initNodes(int participantsNumber) throws LeaderElectionException {
         List<Node> result = new ArrayList<>();
         LeaderElectionAlgorithm.candidatesNumber = 0;
+        LeaderElectionAlgorithm.winnersNumber = 0;
+        LeaderElectionAlgorithm.referees = new ArrayList<>();
+        LeaderElectionAlgorithm.participants = new ArrayList<>();
         if (participantsNumber <= 0) {
             return  result;
         }   //if
@@ -51,6 +57,7 @@ public class LeaderElectionAlgorithm {
         boolean atLeastOneParticipant = false;
         List<Node> result = new ArrayList<>();
         while (!atLeastOneParticipant) {
+            LeaderElectionAlgorithm.participants.clear();
             result.clear();
             for (int i = 0; i < allNodes.size(); i++) {
                 Node node = allNodes.get(i);
@@ -58,15 +65,12 @@ public class LeaderElectionAlgorithm {
                 node.setTakingPart(random.nextDouble() <= calculateParticipantProbability(allNodes.size()));
                 if (node.isTakingPart()) {
                     atLeastOneParticipant = true;
+                    LeaderElectionAlgorithm.participants.add(node);
                 }   //if
                 result.add(node);
             }
         }   //while
-        for (Node node: result) {
-            if (node.isTakingPart()) {
-                LeaderElectionAlgorithm.candidatesNumber++;
-            }   //if
-        }   //for
+        LeaderElectionAlgorithm.candidatesNumber = participants.size();
         return result;
     }
 
@@ -113,6 +117,9 @@ public class LeaderElectionAlgorithm {
                 if (checkCanBeReferee(samplingNode, allNodes.get(randomNodeIndex))) {
                     allNodes.get(randomNodeIndex).setReferee(true);
                     allNodes.get(randomNodeIndex).addRefereeElector(samplingNode);
+                    if (!LeaderElectionAlgorithm.referees.contains(allNodes.get(randomNodeIndex))) {
+                        LeaderElectionAlgorithm.referees.add(allNodes.get(randomNodeIndex));
+                    }   //if
                     exclusions.add(randomNodeIndex);
                     break;
                 }  //if
@@ -133,8 +140,8 @@ public class LeaderElectionAlgorithm {
         return randomIndex;
     }
 
-    public static List<Node> getReferees(List<Node> allNodes) {
-        if (allNodes == null) {
+    public static List<Node> getReferees(List<Node> allNodes) throws LeaderElectionException {
+        if ((allNodes == null) || (LeaderElectionAlgorithm.participants == null)) {
             return new ArrayList<>();
         }   //if
         if (allNodes.isEmpty()) {
@@ -142,7 +149,7 @@ public class LeaderElectionAlgorithm {
         }   //if
         List<Node> result = allNodes;
         int refereesAmount = calculateRefereesAmount(allNodes.size());
-        for (Node node: allNodes) {
+        for (Node node: LeaderElectionAlgorithm.participants) {
             result = sampleRefereeForSingleNode(node, result, refereesAmount);
         }   //for
         return result;
@@ -182,7 +189,7 @@ public class LeaderElectionAlgorithm {
 
     ///finding winner
     public static List<Node> findWinner(List<Node> allNodes) throws LeaderElectionException {
-        if (allNodes == null) {
+        if ((allNodes == null) || (LeaderElectionAlgorithm.referees == null) || (LeaderElectionAlgorithm.participants == null)) {
             return new ArrayList<>();
         }   //if
         if (allNodes.isEmpty()) {
@@ -190,17 +197,22 @@ public class LeaderElectionAlgorithm {
         }   //if
         List<Node> result = allNodes;
         ///nominating winners
-        for (Node node: allNodes) {
+        for (Node node: LeaderElectionAlgorithm.referees) {
             result = nominateWinner(node, result);
         }   //for
         int winnerIndex = -1;
         int highestNominationNum = -1;
+        List<Node> winners = new ArrayList<>();
         ///find winner
-        for (Node node: allNodes) {
+        for (Node node: LeaderElectionAlgorithm.participants) {
             if (node.getNumberOfNominations() > highestNominationNum) {
+                winners.clear();
+                winners.add(node);
                 highestNominationNum = node.getNumberOfNominations();
                 winnerIndex = allNodes.indexOf(node);
-            }   //if
+            } else if (node.getNumberOfNominations() == highestNominationNum) {  //if
+                winners.add(node);
+            }   //else
         }   //for
         ///setting winner
         if (winnerIndex >= 0) {
@@ -208,6 +220,7 @@ public class LeaderElectionAlgorithm {
         } else {    //if
             throw new LeaderElectionException(Consts.ALGORITHM_ERROR_REFEREES_CANNOT_NOMINATE_WINNER);
         }   //else
+        LeaderElectionAlgorithm.winnersNumber = winners.size();
         return allNodes;
     }
 
@@ -254,4 +267,7 @@ public class LeaderElectionAlgorithm {
         return candidatesNumber;
     }
 
+    public static int getWinnersNumber() {
+        return winnersNumber;
+    }
 }

@@ -34,6 +34,7 @@ public class PerformanceAsyncTask extends AsyncTask<PerformanceInput, String, Pe
                 nodesFromAlgorithm = LeaderElectionAlgorithm.getReferees(nodesFromAlgorithm);
                 publishProgress(String.format(Consts.PERFORMANCE_PROGRESS_INFO_NOMINATING_WINNERS, i + 1));
                 LeaderElectionAlgorithm.findWinner(nodesFromAlgorithm);
+                result.incWinnersNumber(LeaderElectionAlgorithm.getWinnersNumber());
                 long elapsedTime = System.currentTimeMillis() - startTime;
                 result.addSingleIterationTimeInMilis(elapsedTime);
                 result.incAlgorithmTotalTimeInMilis(elapsedTime);

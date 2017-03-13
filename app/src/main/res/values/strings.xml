@@ -62,6 +62,7 @@
     <string name="max_node_candidates_percentage">Max candidates %:</string>
     <string name="avg_node_candidates_percentage">Avg candidates %:</string>
     <string name="referees_number">Referees number:</string>
+    <string name="winners_number">Winners number:</string>
     <string name="total_algorithm_run_time">Total time:</string>
     <string name="min_algorithm_run_time">Min algorithm time:</string>
     <string name="max_algorithm_run_time">Max algorithm time:</string>

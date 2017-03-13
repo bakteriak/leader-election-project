@@ -226,6 +226,13 @@
                               android:text="@string/avg_algorithm_run_time"
                               android:paddingBottom="10dp"/>
 
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:text="@string/winners_number"
+                              android:paddingBottom="10dp"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -302,6 +309,13 @@
                               android:layout_height="wrap_content"
                               android:textIsSelectable="false"
                               android:id="@+id/txtAvgAlgorithmTime"
+                              android:paddingBottom="10dp"/>
+
+                    <TextView style="@style/LeaderElectionFontStyleAlgorithmPerformance"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textIsSelectable="false"
+                              android:id="@+id/txtWinnersNumber"
                               android:paddingBottom="10dp"/>
 
                 </LinearLayout>

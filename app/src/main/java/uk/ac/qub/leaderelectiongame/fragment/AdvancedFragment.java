@@ -53,6 +53,7 @@ public class AdvancedFragment extends Fragment {
     private TextView txtAvgAlgorithmTime;
     private TextView txtNetworkSize;
     private TextView txtAlgorithmRuns;
+    private TextView txtWinnersNumber;
 
     //Progress dialog
     private ProgressDialog pDialog;
@@ -93,6 +94,7 @@ public class AdvancedFragment extends Fragment {
         this.txtAvgAlgorithmTime = (TextView) v.findViewById(R.id.txtAvgAlgorithmTime);
         this.txtNetworkSize = (TextView) v.findViewById(R.id.txtNetworkSize);
         this.txtAlgorithmRuns = (TextView) v.findViewById(R.id.txtAlgorithmRuns);
+        this.txtWinnersNumber = (TextView) v.findViewById(R.id.txtWinnersNumber);
 
         //Events
         this.handleSpinnerEvents();
@@ -181,6 +183,7 @@ public class AdvancedFragment extends Fragment {
         this.txtMinAlgorithmTime.setText(Consts.BLANK_STRING_VALUE);
         this.txtMaxAlgorithmTime.setText(Consts.BLANK_STRING_VALUE);
         this.txtAvgAlgorithmTime.setText(Consts.BLANK_STRING_VALUE);
+        this.txtWinnersNumber.setText(Consts.BLANK_STRING_VALUE);
     }
 
     private void showPerformanceResults(PerformanceOutput output) {
@@ -197,6 +200,7 @@ public class AdvancedFragment extends Fragment {
         this.txtMinAlgorithmTime.setText(PerformanceHelper.calculateAndFormatMinAlgorithmTime(output.getAlgoritmTimeInMilis()));
         this.txtMaxAlgorithmTime.setText(PerformanceHelper.calculateAndFormatMaxAlgorithmTime(output.getAlgoritmTimeInMilis()));
         this.txtAvgAlgorithmTime.setText(PerformanceHelper.calculateAndFormatAvgAlgorithmTime(output.getAlgoritmTimeInMilis()));
+        this.txtWinnersNumber.setText(Consts.INTEGER_FORMAT.format(output.getWinnersNumber()));
         this.svResults.setVisibility(View.VISIBLE);
         this.resultsLine.setVisibility(View.VISIBLE);
     }
