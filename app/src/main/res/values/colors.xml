@@ -21,4 +21,46 @@
 
     <color name="buttonBg">#669966</color>
 
+    <!-- Screens background color-->
+    <color name="slider1Bg">#336699</color>
+    <color name="slider2Bg">#669966</color>
+    <color name="slider3Bg">#990033</color>
+    <color name="slider4Bg">#336699</color>
+    <color name="slider5Bg">#669966</color>
+    <color name="slider6Bg">#990033</color>
+
+    <!-- Dots inactive colors -->
+    <color name="slider1DotDark">#23476B</color>
+    <color name="slider2DotDark">#334C33</color>
+    <color name="slider3DotDark">#5B001E</color>
+    <color name="slider4DotDark">#23476B</color>
+    <color name="slider5DotDark">#334C33</color>
+    <color name="slider6DotDark">#5B001E</color>
+
+    <!-- Dots active colors -->
+    <color name="slider1DotLight">#C1D1E0</color>
+    <color name="slider2DotLight">#B2CCB2</color>
+    <color name="slider3DotLight">#CC7F99</color>
+    <color name="slider4DotLight">#C1D1E0</color>
+    <color name="slider5DotLight">#B2CCB2</color>
+    <color name="slider6DotLight">#CC7F99</color>
+
+    <array name="array_dot_active">
+        <item>@color/slider1DotLight</item>
+        <item>@color/slider2DotLight</item>
+        <item>@color/slider3DotLight</item>
+        <item>@color/slider4DotLight</item>
+        <item>@color/slider5DotLight</item>
+        <item>@color/slider6DotLight</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/slider1DotDark</item>
+        <item>@color/slider2DotDark</item>
+        <item>@color/slider3DotDark</item>
+        <item>@color/slider4DotDark</item>
+        <item>@color/slider5DotDark</item>
+        <item>@color/slider6DotDark</item>
+    </array>
+
 </resources>
