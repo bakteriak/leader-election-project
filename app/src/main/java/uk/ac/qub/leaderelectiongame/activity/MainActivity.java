@@ -1,23 +1,26 @@
 package uk.ac.qub.leaderelectiongame.activity;
+
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
+import uk.ac.qub.leaderelectiongame.R;
 import uk.ac.qub.leaderelectiongame.fragment.AboutFragment;
+import uk.ac.qub.leaderelectiongame.fragment.AdvancedFragment;
 import uk.ac.qub.leaderelectiongame.fragment.HomeFragment;
 import uk.ac.qub.leaderelectiongame.fragment.LeaderGameFragment;
-import uk.ac.qub.leaderelectiongame.R;
 import uk.ac.qub.leaderelectiongame.fragment.ResearchPaperFragment;
-import uk.ac.qub.leaderelectiongame.fragment.AdvancedFragment;
 import uk.ac.qub.leaderelectiongame.fragment.StepByStepFragment;
+import uk.ac.qub.leaderelectiongame.helpers.SettingsManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ResideMenuItem itemLeaderGame;
     private ResideMenuItem itemAbout;
     private ResideMenuItem itemAdvanced;
+    private ResideMenuItem itemHelp;
     private Context mContext;
     private View buttonRender;
     private LinearLayout container;
@@ -77,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         itemLeaderGame = new ResideMenuItem(this,R.drawable.icon_leader_game,"Leader Game");
         itemStepByStep = new ResideMenuItem(this,R.drawable.icon_step_by_step,"Step By Step");
         itemAdvanced = new ResideMenuItem(this, R.drawable.icon_advanced, "Advanced");
+        itemHelp = new ResideMenuItem(this, R.drawable.icon_help, "Help");
 
         itemHome.setOnClickListener(this);
         itemResearchPaper.setOnClickListener(this);
@@ -84,12 +89,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         itemLeaderGame.setOnClickListener(this);
         itemStepByStep.setOnClickListener(this);
         itemAdvanced.setOnClickListener(this);
+        itemHelp.setOnClickListener(this);
 
         resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemResearchPaper,ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemAbout,ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemLeaderGame,ResideMenu.DIRECTION_RIGHT);
-        resideMenu.addMenuItem(itemStepByStep,ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemAbout, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemHelp, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemLeaderGame, ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemStepByStep, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemAdvanced, ResideMenu.DIRECTION_RIGHT);
 
         //you can disable a side by -->
@@ -125,32 +132,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        if(v == itemHome){
+        if (v == itemHome) {
             changeFragment(new HomeFragment());
-        }else if(v == itemResearchPaper){
+        } else if(v == itemResearchPaper) {
             changeFragment(new ResearchPaperFragment());
             resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
             resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_LEFT);
-        }else if(v == itemAbout){
+        } else if(v == itemAbout) {
             changeFragment(new AboutFragment());
-        }else if(v == itemLeaderGame){
+        } else if(v == itemLeaderGame){
             changeFragment(new LeaderGameFragment());
-        }else if(v == itemStepByStep){
+        } else if(v == itemStepByStep){
             changeFragment(new StepByStepFragment());
-        }else if(v == itemAdvanced){
+        } else if(v == itemAdvanced){
             changeFragment(new AdvancedFragment());
+        } else if(v == itemHelp) {
+            SettingsManager settingsManager = new SettingsManager(this);
+            settingsManager.setShowHelpSlider(true);
+            redirectToActivity(SliderActivity.class);
+            finish();
         }
-
         resideMenu.closeMenu();
     }
 
     private void changeFragment(Fragment targetFragment) {
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.main_fragment,targetFragment,"fragment")
                 .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
+    }
+
+    private void redirectToActivity(Class clazz) {
+        if (this.getClass() != clazz) {
+            Intent intent = new Intent(this, clazz);
+            startActivity(intent);
+            finish();
+        }   //if
     }
 
     public ResideMenu getResideMenu(){

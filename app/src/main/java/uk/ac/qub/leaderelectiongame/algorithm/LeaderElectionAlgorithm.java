@@ -12,7 +12,7 @@ import uk.ac.qub.leaderelectiongame.model.Node;
 
 public class LeaderElectionAlgorithm {
 
-    private static Random random = new Random();
+    private static Random random = new Random(System.currentTimeMillis());
 
     private static int candidatesNumber = 0;
     private static int winnersNumber = 0;

@@ -70,4 +70,30 @@
     <string name="improper_algorithm_params">Algorithm`s input parameters do not seem right. Please choose proper values from the lists.</string>
     <string name="performance_test_in_progress">Performance test in progress. Please wait a moment to see results.</string>
     <string name="performance_test_error">Performance test finished with errors. Please try again.</string>
+
+
+    <!-- Slider String -->
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="slider_subtitle">How it works?</string>
+
+    <string name="slide_1_title">Home</string>
+    <string name="slide_1_desc">Swipe left/right to open menu or click the buttons at the top!</string>
+
+    <string name="slide_2_title">Research Paper</string>
+    <string name="slide_2_desc">Read more about the randomized sublinear leader election algorithm!</string>
+
+    <string name="slide_3_title">About</string>
+    <string name="slide_3_desc">Read more about the project!</string>
+
+    <string name="slide_4_title">Leader Game</string>
+    <string name="slide_4_desc">Play leader election algorithm multiplayer game!</string>
+
+    <string name="slide_5_title">Step By Step</string>
+    <string name="slide_5_desc">Track each stage of leader election algorithm with detailed explanation!</string>
+
+    <string name="slide_6_title">Advanced</string>
+    <string name="slide_6_desc">Measure performance of leader election algorithm!</string>
+
 </resources>
