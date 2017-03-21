@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         itemLeaderGame = new ResideMenuItem(this,R.drawable.icon_leader_game,"Leader Game");
         itemStepByStep = new ResideMenuItem(this,R.drawable.icon_step_by_step,"Step By Step");
         itemAdvanced = new ResideMenuItem(this, R.drawable.icon_advanced, "Advanced");
-        itemHelp = new ResideMenuItem(this, R.drawable.icon_question_mark, "Help");
+        itemHelp = new ResideMenuItem(this, R.drawable.icon_help, "Help");
 
         itemHome.setOnClickListener(this);
         itemResearchPaper.setOnClickListener(this);
