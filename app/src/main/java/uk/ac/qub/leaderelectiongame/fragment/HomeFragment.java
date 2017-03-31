@@ -1,11 +1,13 @@
 package uk.ac.qub.leaderelectiongame.fragment;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.special.ResideMenu.ResideMenu;
 
@@ -31,6 +33,9 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_home, container, false);
+        final TextView about_TextView = (TextView) v.findViewById(R.id.textProjectName);
+        about_TextView.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "copperplate_t_light.ttf"));
+
         setUpViews();
         return v;
     }

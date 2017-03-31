@@ -31,6 +31,7 @@
     <string name="about_textview">about_TextView</string>
 
     <!-- Leader Game Fragment String -->
+    <string name="server_connection_error">Error occurred - unable to connect server. Please try again.</string>
 
 
     <!-- About Fragment String -->
@@ -95,5 +96,6 @@
 
     <string name="slide_6_title">Advanced</string>
     <string name="slide_6_desc">Measure performance of leader election algorithm!</string>
+    <string name="leader_election_game">Leader Election Game</string>
 
 </resources>
