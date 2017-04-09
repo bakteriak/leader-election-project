@@ -12,7 +12,7 @@ import uk.ac.qub.leaderelectiongame.model.Node;
 
 public class LeaderElectionAlgorithm {
 
-    private static Random random = new Random(System.currentTimeMillis());
+    private static final Random random = new Random(System.currentTimeMillis());
 
     private static int candidatesNumber = 0;
     private static int winnersNumber = 0;
@@ -140,7 +140,7 @@ public class LeaderElectionAlgorithm {
         return randomIndex;
     }
 
-    public static List<Node> getReferees(List<Node> allNodes) throws LeaderElectionException {
+    public static List<Node> getReferees(List<Node> allNodes) {
         if ((allNodes == null) || (LeaderElectionAlgorithm.participants == null)) {
             return new ArrayList<>();
         }   //if

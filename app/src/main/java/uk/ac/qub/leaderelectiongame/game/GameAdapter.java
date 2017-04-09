@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import uk.ac.qub.leaderelectiongame.R;
 
 public class GameAdapter extends BaseAdapter {
-    private ArrayList<String> mListItems;
-    private LayoutInflater mLayoutInflater;
+    private final ArrayList<String> mListItems;
+    private final LayoutInflater mLayoutInflater;
 
     public GameAdapter(Context context, ArrayList<String> arrayList){
 

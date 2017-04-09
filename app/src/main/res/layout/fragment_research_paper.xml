@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="uk.ac.qub.leaderelectiongame.fragment.LeaderGameFragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/llResearchPaper"
     android:orientation="vertical">
 
     <ImageView
@@ -15,8 +15,8 @@
         android:background="@android:color/white"
         android:scaleType="fitCenter" />
 
-    <com.joanzapata.pdfview.PDFView
-        android:id="@+id/pdfview"
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

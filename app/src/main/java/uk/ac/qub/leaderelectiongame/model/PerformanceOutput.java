@@ -5,10 +5,10 @@ import java.util.List;
 
 public class PerformanceOutput {
 
-    List<Integer> candidatesNumbers = new ArrayList<>();
-    int winnersNumber = 0;
-    List<Long> algoritmTimeInMilis = new ArrayList<>();
-    long algorithmTotalTimeInMilis = 0;
+    private List<Integer> candidatesNumbers = new ArrayList<>();
+    private int winnersNumber = 0;
+    private List<Long> algoritmTimeInMilis = new ArrayList<>();
+    private long algorithmTotalTimeInMilis = 0;
 
     public PerformanceOutput() {
         candidatesNumbers = new ArrayList<>();

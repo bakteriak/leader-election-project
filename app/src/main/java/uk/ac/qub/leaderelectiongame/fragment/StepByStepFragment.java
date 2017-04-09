@@ -58,9 +58,6 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
     public StepByStepFragment() {
     }
 
-    protected void onCreate() {
-    }
-
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -137,7 +134,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             if (this.nodes == null) {
                 return false;
             }   //if
-            List<Node> participants = LeaderElectionAlgorithm.getParticipants(new ArrayList<Node>(this.nodes.keySet()));
+            List<Node> participants = LeaderElectionAlgorithm.getParticipants(new ArrayList<>(this.nodes.keySet()));
             for (Node participant: participants) {
                 if (participant.isTakingPart()) {
                     if (this.nodes.containsKey(participant)) {
@@ -188,7 +185,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             if (this.nodes == null) {
                 return false;
             }   //if
-            List<Node> refereesFromAlgorithm = LeaderElectionAlgorithm.getReferees(new ArrayList<Node>(this.nodes.keySet()));
+            List<Node> refereesFromAlgorithm = LeaderElectionAlgorithm.getReferees(new ArrayList<>(this.nodes.keySet()));
             for (Node referee: refereesFromAlgorithm) {
                 if (referee.isReferee()) {
                     if (this.nodes.containsKey(referee)) {
@@ -250,7 +247,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             if (this.nodes == null) {
                 return false;
             }   //if
-            List<Node> winnersFromAlgorithm = LeaderElectionAlgorithm.findWinner(new ArrayList<Node>(this.nodes.keySet()));
+            List<Node> winnersFromAlgorithm = LeaderElectionAlgorithm.findWinner(new ArrayList<>(this.nodes.keySet()));
             for (Node winner: winnersFromAlgorithm) {
                 if (winner.isWinner()) {
                     if (this.nodes.containsKey(winner)) {

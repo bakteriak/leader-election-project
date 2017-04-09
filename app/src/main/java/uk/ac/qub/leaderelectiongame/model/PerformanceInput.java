@@ -1,11 +1,9 @@
 package uk.ac.qub.leaderelectiongame.model;
 
-import uk.ac.qub.leaderelectiongame.consts.Consts;
-
 public class PerformanceInput {
 
-    private int networkSize;
-    private int algorithmRuns;
+    private final int networkSize;
+    private final int algorithmRuns;
 
     public PerformanceInput(int networkSize, int algorithmRuns) {
         this.networkSize = networkSize;

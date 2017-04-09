@@ -1,14 +1,12 @@
 package uk.ac.qub.leaderelectiongame.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
@@ -24,8 +22,6 @@ import uk.ac.qub.leaderelectiongame.helpers.SettingsManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //private static final int REQUEST_PERMISSION = 10;
-
     private ResideMenu resideMenu;
     private ResideMenuItem itemHome;
     private ResideMenuItem itemResearchPaper;
@@ -34,44 +30,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ResideMenuItem itemAbout;
     private ResideMenuItem itemAdvanced;
     private ResideMenuItem itemHelp;
-    private Context mContext;
-    private View buttonRender;
-    private LinearLayout container;
 
-    private RuntimePermissions runtimePermissions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mContext=this;
         setUpMenu();
-
         if(savedInstanceState == null){
             changeFragment(new HomeFragment());
         }
-
-        //RuntimePermissions runtimePermissions = new RuntimePermissions();
-
-//        requestPermissions(new String[]{
-//                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                Manifest.permission.READ_EXTERNAL_STORAGE,
-//                Manifest.permission.INTERNET},
-//                REQUEST_PERMISSION);
-    }
-   public void OnPermissionsGranted (int request_code){
-        //Do anything when permisson granted
-        Toast.makeText(getApplicationContext(), "Permission granted", Toast.LENGTH_LONG).show();
     }
 
     private void setUpMenu() {
         //attach menu to current activity
         resideMenu = new ResideMenu(this);
-
-        resideMenu.setBackground(R.drawable.menu_background);
+        resideMenu.setBackground(R.drawable.menu_bg);
         resideMenu.attachToActivity(this);
-        resideMenu.setMenuListener(menuListener);
-
-        //setting width of the menu using scale factor between 0.1 f to 1.0 f
         resideMenu.setScaleValue(0.6f);
 
         //adding menu items
@@ -81,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         itemLeaderGame = new ResideMenuItem(this,R.drawable.icon_leader_game,"Leader Game");
         itemStepByStep = new ResideMenuItem(this,R.drawable.icon_step_by_step,"Step By Step");
         itemAdvanced = new ResideMenuItem(this, R.drawable.icon_advanced, "Advanced");
-        itemHelp = new ResideMenuItem(this, R.drawable.icon_help, "Help");
+        itemHelp = new ResideMenuItem(this, R.drawable.icon_question_mark, "Help");
 
         itemHome.setOnClickListener(this);
         itemResearchPaper.setOnClickListener(this);
@@ -99,16 +73,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resideMenu.addMenuItem(itemStepByStep, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemAdvanced, ResideMenu.DIRECTION_RIGHT);
 
-        //you can disable a side by -->
-        //   resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
-
         findViewById(R.id.title_bar_left_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
             }
         });
-
         findViewById(R.id.title_bar_right_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,17 +87,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
-        @Override
-        public void openMenu() {
-            //Toast.makeText(mContext,"Menu is opened!",Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void closeMenu() {
-            //Toast.makeText(mContext, "Menu is closed!", Toast.LENGTH_SHORT).show();
-        }
-    };
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return resideMenu.dispatchTouchEvent(ev);
+    }
 
     @Override
     public void onClick(View v) {
@@ -136,8 +99,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             changeFragment(new HomeFragment());
         } else if(v == itemResearchPaper) {
             changeFragment(new ResearchPaperFragment());
-            resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
-            resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_LEFT);
         } else if(v == itemAbout) {
             changeFragment(new AboutFragment());
         } else if(v == itemLeaderGame){
@@ -156,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void changeFragment(Fragment targetFragment) {
+        resideMenu.clearIgnoredViewList();
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.main_fragment,targetFragment,"fragment")

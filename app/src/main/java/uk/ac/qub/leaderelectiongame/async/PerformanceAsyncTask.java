@@ -6,7 +6,6 @@ import java.util.List;
 
 import uk.ac.qub.leaderelectiongame.algorithm.LeaderElectionAlgorithm;
 import uk.ac.qub.leaderelectiongame.consts.Consts;
-import uk.ac.qub.leaderelectiongame.exceptions.LeaderElectionException;
 import uk.ac.qub.leaderelectiongame.model.Node;
 import uk.ac.qub.leaderelectiongame.model.PerformanceInput;
 import uk.ac.qub.leaderelectiongame.model.PerformanceOutput;

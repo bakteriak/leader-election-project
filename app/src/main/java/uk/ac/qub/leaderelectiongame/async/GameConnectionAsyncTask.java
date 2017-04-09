@@ -14,7 +14,7 @@ import java.net.SocketTimeoutException;
 
 public class GameConnectionAsyncTask extends AsyncTask<Void, String, Void> {
 
-    private static final String SERVER_IP = "10.0.2.2"; //ip from emulator
+    private static final String SERVER_IP = "54.245.51.53"; //ip from aws
     private static final int SERVER_PORT = 2222;
     private static final int TIMEOUT_MS = 3000;
 

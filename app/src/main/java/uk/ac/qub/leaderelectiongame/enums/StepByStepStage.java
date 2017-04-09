@@ -7,31 +7,25 @@ public enum StepByStepStage {
 
     FIRST(1,
             Consts.STEP_BY_STEP_STAGE_ONE_CAPTION,
-            Consts.STEP_BY_STEP_STAGE_ONE_EXPLANATION,
-            Consts.STEP_BY_STEP_STAGE_ONE_ALGORITHM_INFO),
+            Consts.STEP_BY_STEP_STAGE_ONE_EXPLANATION),
     SECOND(2,
             Consts.STEP_BY_STEP_STAGE_TWO_CAPTION,
-            Consts.STEP_BY_STEP_STAGE_TWO_EXPLANATION,
-            Consts.STEP_BY_STEP_STAGE_TWO_ALGORITHM_INFO),
+            Consts.STEP_BY_STEP_STAGE_TWO_EXPLANATION),
     THIRD(3,
             Consts.STEP_BY_STEP_STAGE_THREE_CAPTION,
-            Consts.STEP_BY_STEP_STAGE_THREE_EXPLANATION,
-            Consts.STEP_BY_STEP_STAGE_THREE_ALGORITHM_INFO),
+            Consts.STEP_BY_STEP_STAGE_THREE_EXPLANATION),
     FOURTH(4,
             Consts.STEP_BY_STEP_STAGE_FOUR_CAPTION,
-            Consts.STEP_BY_STEP_STAGE_FOUR_EXPLANATION,
-            Consts.STEP_BY_STEP_STAGE_FOUR_ALGORITHM_INFO);
+            Consts.STEP_BY_STEP_STAGE_FOUR_EXPLANATION);
 
     private final String caption;
     private final String info;
-    private final String algorithmInfo;
     private final int number;
 
-    private StepByStepStage(int number, String caption, String info, String algorithmInfo) {
+    StepByStepStage(int number, String caption, String info) {
         this.number = number;
         this.caption = caption;
         this.info = info;
-        this.algorithmInfo = algorithmInfo;
     }
 
     public String getCaption() {
@@ -44,10 +38,6 @@ public enum StepByStepStage {
 
     public int getNumber() {
         return number;
-    }
-
-    public String getaAlgorithmInfo() {
-        return algorithmInfo;
     }
 
     public StepByStepStage getNextStage() {

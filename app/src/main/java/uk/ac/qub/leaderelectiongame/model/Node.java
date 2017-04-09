@@ -10,7 +10,7 @@ public class Node {
     private boolean takingPart;
     private boolean referee;
     private boolean winner;
-    private List<Node> refereeElectedBy;
+    private final List<Node> refereeElectedBy;
     private int numberOfNominations;
 
     public Node(int id) {
@@ -24,10 +24,6 @@ public class Node {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public boolean isTakingPart() {

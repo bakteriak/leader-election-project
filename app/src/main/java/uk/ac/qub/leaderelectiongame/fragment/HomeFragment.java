@@ -9,10 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.special.ResideMenu.ResideMenu;
-
 import uk.ac.qub.leaderelectiongame.R;
-import uk.ac.qub.leaderelectiongame.activity.MainActivity;
 
 
 /**
@@ -20,8 +17,7 @@ import uk.ac.qub.leaderelectiongame.activity.MainActivity;
  */
 public class HomeFragment extends Fragment {
 
-    View v;
-    ResideMenu resideMenu;
+    private View v;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -35,15 +31,7 @@ public class HomeFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView about_TextView = (TextView) v.findViewById(R.id.textProjectName);
         about_TextView.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "copperplate_t_light.ttf"));
-
-        setUpViews();
         return v;
-    }
-    private void setUpViews(){
-
-        MainActivity parentActivity = (MainActivity)getActivity();
-        resideMenu = parentActivity.getResideMenu();
-        //v.
     }
 
 }

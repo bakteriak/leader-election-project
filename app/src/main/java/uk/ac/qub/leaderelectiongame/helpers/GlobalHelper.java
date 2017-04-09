@@ -1,7 +1,7 @@
 package uk.ac.qub.leaderelectiongame.helpers;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+import android.text.TextUtils;
+
 import java.util.List;
 
 import uk.ac.qub.leaderelectiongame.consts.Consts;
@@ -25,7 +25,7 @@ public class GlobalHelper {
         }
         String result = "";
         for (Node node: nodes) {
-            if (result != "") {
+            if (!TextUtils.isEmpty(result)) {
                 result += "; ";
             }
             result += String.valueOf(node.getId());

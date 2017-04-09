@@ -6,7 +6,7 @@ import java.util.List;
 
 import uk.ac.qub.leaderelectiongame.consts.Consts;
 
-public class MathHelper {
+class MathHelper {
 
     public static int selectMinValue(List<Integer> values) {
         if (values == null) {
@@ -70,24 +70,6 @@ public class MathHelper {
         }   //if
         try {
             return number.divide(total).multiply(new BigDecimal(Consts.ONE_HUNDRED));
-        } catch (Exception ex) {
-            return new BigDecimal(Consts.ALGRITHM_PERFORMANCE_ERROR_CODE);
-        }   //catch
-    }
-
-    public static BigDecimal calculateAvg(List<Integer> values) {
-        if (values == null) {
-            return new BigDecimal(Consts.ALGRITHM_PERFORMANCE_ERROR_CODE);
-        }   //if
-        try {
-            BigDecimal sum = new BigDecimal(0);
-            if (!values.isEmpty()) {
-                for (Integer value : values) {
-                    sum = sum.add(new BigDecimal(value));
-                }   //for
-                return sum.divide(new BigDecimal(values.size()));
-            }   //if
-            return new BigDecimal(Consts.ALGRITHM_PERFORMANCE_ERROR_CODE);
         } catch (Exception ex) {
             return new BigDecimal(Consts.ALGRITHM_PERFORMANCE_ERROR_CODE);
         }   //catch

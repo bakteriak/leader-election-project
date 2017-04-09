@@ -11,6 +11,7 @@
 
     <!-- Home Fragment String -->
     <string name="text_swipe_right_left_to_open_menu">Swipe right/left to open menu</string>
+    <string name="leader_election_game">Leader Election Game</string>
 
     <!-- Step By Step Fragment String -->
     <string name="button_next_step_by_step">Next</string>
@@ -96,6 +97,5 @@
 
     <string name="slide_6_title">Advanced</string>
     <string name="slide_6_desc">Measure performance of leader election algorithm!</string>
-    <string name="leader_election_game">Leader Election Game</string>
 
 </resources>

@@ -18,16 +18,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import uk.ac.qub.leaderelectiongame.R;
 import uk.ac.qub.leaderelectiongame.algorithm.LeaderElectionAlgorithm;
 import uk.ac.qub.leaderelectiongame.async.PerformanceAsyncTask;
 import uk.ac.qub.leaderelectiongame.consts.Consts;
-import uk.ac.qub.leaderelectiongame.exceptions.LeaderElectionException;
 import uk.ac.qub.leaderelectiongame.helpers.PerformanceHelper;
-import uk.ac.qub.leaderelectiongame.model.Node;
 import uk.ac.qub.leaderelectiongame.model.PerformanceInput;
 import uk.ac.qub.leaderelectiongame.model.PerformanceOutput;
 
@@ -58,11 +53,11 @@ public class AdvancedFragment extends Fragment {
     //Progress dialog
     private ProgressDialog pDialog;
 
-    //Wake lock
-    PowerManager.WakeLock wakeLock = null;
-
     //Data from selects, default initialized
     private int networkSize = Consts.ALGRITHM_PERFORMANCE_DEFAULT_NETWORK_SIZE;
+
+    //Wake lock
+    private PowerManager.WakeLock wakeLock = null;
     private int algorithmRuns = Consts.ALGRITHM_PERFORMANCE_DEFAULT_ALGORITHM_RUNS;
 
     public AdvancedFragment() {
@@ -246,7 +241,7 @@ public class AdvancedFragment extends Fragment {
         }.execute(input);
     }
 
-    protected void showOrUpdateDialog(String message) {
+    private void showOrUpdateDialog(String message) {
         if (TextUtils.isEmpty(message)) {
             return;
         }
@@ -265,7 +260,7 @@ public class AdvancedFragment extends Fragment {
         }   //if
     }
 
-    protected void hideDialog() {
+    private void hideDialog() {
         if (pDialog == null) {
             return;
         }   //if

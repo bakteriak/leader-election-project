@@ -10,7 +10,6 @@
               android:paddingBottom="20dp"
               tools:context="uk.ac.qub.leaderelectiongame.fragment.AdvancedFragment">
 
-`
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                       android:orientation="horizontal"
                       android:layout_width="match_parent"
@@ -26,6 +25,7 @@
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                       android:orientation="horizontal"
+                      android:baselineAligned="false"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content">
 
@@ -146,6 +146,7 @@
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                           android:orientation="horizontal"
+                          android:baselineAligned="false"
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:layout_marginTop="10dp">
