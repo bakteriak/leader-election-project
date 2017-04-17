@@ -41,12 +41,19 @@ public class Consts {
     public static final DecimalFormat INTEGER_FORMAT = new DecimalFormat("#,###,###,##0");
     public static final DecimalFormat SECONDS_FORMAT = new DecimalFormat("#,###,###,###,###,##0");
 
-    public static final String PERFORMANCE_PROGRESS_INFO_INIT_NODES = "Running iteration %d: Initializng network...";
-    public static final String PERFORMANCE_PROGRESS_INFO_GET_PARTICIPANTS = "Running iteration %d: Looking for participants...";
-    public static final String PERFORMANCE_PROGRESS_INFO_GET_REFEREES = "Running iteration %d: Looking for referees...";
-    public static final String PERFORMANCE_PROGRESS_INFO_NOMINATING_WINNERS = "Running iteration %d: Nominating winners...";
+    public static final String PERFORMANCE_PROGRESS_INFO_INIT_NODES = "Running iteration %d of %d: Initializng network...";
+    public static final String PERFORMANCE_PROGRESS_INFO_GET_PARTICIPANTS = "Running iteration %d of %d: Looking for participants...";
+    public static final String PERFORMANCE_PROGRESS_INFO_GET_REFEREES = "Running iteration %d of %d: Looking for referees...";
+    public static final String PERFORMANCE_PROGRESS_INFO_NOMINATING_WINNERS = "Running iteration %d of %d: Nominating winners...";
 
     public static final String PERFORMANCE_WAKE_LOCK = "PerformanceWakeLock";
+
+    public static final String CIPHER_ALGORITHM = "AES/CBC/PKCS5PADDING";
+    public static final String CIPHER_KEY_SPEC = "AES";
+    public static final String CIPHER_KEY = "LeaderElectionGameCipherKey";
+
+    public static final String MSG_CLOSE_CONNECTION = "qub.ac.uk.leaderelectiongame.CLOSE";
+    public static final String MSG_ALGORITHM_FINISHED = "Algorithm finished. Thank you very much!";
 
 }
 

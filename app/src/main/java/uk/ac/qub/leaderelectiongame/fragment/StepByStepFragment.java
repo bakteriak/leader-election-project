@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,8 @@ import uk.ac.qub.leaderelectiongame.model.Node;
  * A simple {@link Fragment} subclass.
  */
 public class StepByStepFragment extends Fragment implements View.OnClickListener {
+
+    private static final String TAG = "StepByStepFragment";
 
     private PopupWindow popupWindow;
     //layout elements
@@ -102,6 +105,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             }   //for
             return true;
         } catch (Exception ex) {
+            if (this.nodes == null) {
+                this.nodes = new HashMap<>();
+            }   //if
+            Log.e(TAG, Log.getStackTraceString(ex));
             return false;
         }   //if
     }
@@ -124,6 +131,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             }   //for
             return true;
         } catch (Exception ex) {
+            Log.e(TAG, Log.getStackTraceString(ex));
             return false;
         }   //if
     }
@@ -148,6 +156,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             }   //for
             return true;
         } catch (Exception ex) {
+            Log.e(TAG, Log.getStackTraceString(ex));
             return false;
         }   //if
     }
@@ -175,6 +184,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             }   //for
             return true;
         } catch (Exception ex) {
+            Log.e(TAG, Log.getStackTraceString(ex));
             return false;
         }   //if
     }
@@ -202,6 +212,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             }   //for
             return true;
         } catch (Exception ex) {
+            Log.e(TAG, Log.getStackTraceString(ex));
             return false;
         }   //if
     }
@@ -237,6 +248,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             }   //for
             return true;
         } catch (Exception ex) {
+            Log.e(TAG, Log.getStackTraceString(ex));
             return false;
         }   //if
     }
@@ -260,6 +272,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             }   //for
             return true;
         } catch (Exception ex) {
+            Log.e(TAG, Log.getStackTraceString(ex));
             return false;
         }   //if
     }
@@ -299,6 +312,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             }   //for
             return true;
         } catch (Exception ex) {
+            Log.e(TAG, Log.getStackTraceString(ex));
             return false;
         }   //if
     }

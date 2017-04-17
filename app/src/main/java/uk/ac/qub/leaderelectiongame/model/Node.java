@@ -13,12 +13,15 @@ public class Node {
     private final List<Node> refereeElectedBy;
     private int numberOfNominations;
 
+    private List<Node> neighbours;
+
     public Node(int id) {
         this.id = id;
         this.takingPart = false;
         this.referee = false;
         this.winner = false;
         this.refereeElectedBy = new ArrayList<>();
+        this.neighbours = new ArrayList<>();
         this.numberOfNominations = 0;
     }
 
@@ -68,4 +71,18 @@ public class Node {
     public void incNumberOfNominations() {
         this.numberOfNominations++;
     }
+
+    public List<Node> getNeighbours() {
+        return neighbours;
+    }
+
+    public void addNeighbour(Node neighbour) {
+        if (this.neighbours == null) {
+            this.neighbours = new ArrayList<>();
+        }   //if
+        if (neighbour != null) {
+            this.neighbours.add(neighbour);
+        }   //if
+    }
+
 }

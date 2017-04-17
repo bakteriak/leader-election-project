@@ -24,14 +24,14 @@ public class PerformanceAsyncTask extends AsyncTask<PerformanceInput, String, Pe
             PerformanceOutput result = new PerformanceOutput();
             for (int i = 0; i < performanceInputs[0].getAlgorithmRuns(); i++) {
                 long startTime = System.currentTimeMillis();
-                publishProgress(String.format(Consts.PERFORMANCE_PROGRESS_INFO_INIT_NODES, i + 1));
+                publishProgress(String.format(Consts.PERFORMANCE_PROGRESS_INFO_INIT_NODES, i + 1, performanceInputs[0].getAlgorithmRuns()));
                 List<Node> nodesFromAlgorithm = LeaderElectionAlgorithm.initNodes(performanceInputs[0].getNetworkSize());
-                publishProgress(String.format(Consts.PERFORMANCE_PROGRESS_INFO_GET_PARTICIPANTS, i + 1));
+                publishProgress(String.format(Consts.PERFORMANCE_PROGRESS_INFO_GET_PARTICIPANTS, i + 1, performanceInputs[0].getAlgorithmRuns()));
                 nodesFromAlgorithm = LeaderElectionAlgorithm.getParticipants(nodesFromAlgorithm);
                 result.addCandidateNumber(LeaderElectionAlgorithm.getCandidatesNumber());
-                publishProgress(String.format(Consts.PERFORMANCE_PROGRESS_INFO_GET_REFEREES, i + 1));
+                publishProgress(String.format(Consts.PERFORMANCE_PROGRESS_INFO_GET_REFEREES, i + 1, performanceInputs[0].getAlgorithmRuns()));
                 nodesFromAlgorithm = LeaderElectionAlgorithm.getReferees(nodesFromAlgorithm);
-                publishProgress(String.format(Consts.PERFORMANCE_PROGRESS_INFO_NOMINATING_WINNERS, i + 1));
+                publishProgress(String.format(Consts.PERFORMANCE_PROGRESS_INFO_NOMINATING_WINNERS, i + 1, performanceInputs[0].getAlgorithmRuns()));
                 LeaderElectionAlgorithm.findWinner(nodesFromAlgorithm);
                 result.incWinnersNumber(LeaderElectionAlgorithm.getWinnersNumber());
                 long elapsedTime = System.currentTimeMillis() - startTime;

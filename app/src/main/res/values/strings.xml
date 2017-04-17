@@ -33,6 +33,7 @@
 
     <!-- Leader Game Fragment String -->
     <string name="server_connection_error">Error occurred - unable to connect server. Please try again.</string>
+    <string name="button_new_game">New game</string>
 
 
     <!-- About Fragment String -->

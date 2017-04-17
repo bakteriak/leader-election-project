@@ -2,6 +2,7 @@ package uk.ac.qub.leaderelectiongame.algorithm;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -43,8 +44,62 @@ public class LeaderElectionAlgorithm {
             }
             assignedIds.add(newId);
             result.add(new Node(newId));
-        }
+        }   //for
         return result;
+    }
+
+    public static List<Node> initNodesWithNeighbours(int participantsNumber) throws LeaderElectionException {
+        List<Node> result = new ArrayList<>();
+        LeaderElectionAlgorithm.candidatesNumber = 0;
+        LeaderElectionAlgorithm.winnersNumber = 0;
+        LeaderElectionAlgorithm.referees = new ArrayList<>();
+        LeaderElectionAlgorithm.participants = new ArrayList<>();
+        if (participantsNumber <= 0) {
+            return  result;
+        }   //if
+        int maxId = calculateMaxId(participantsNumber);
+        if (participantsNumber > maxId) {
+            throw new LeaderElectionException(Consts.ALGORITHM_ERROR_TOO_MANY_PARTICIPANTS);
+        }   //if
+        Set<Integer> assignedIds = new HashSet<>();
+        for (int i = 0; i < participantsNumber; i++) {
+            int newId = random.nextInt(maxId) + 1;
+            while (true) {
+                if (!assignedIds.contains(newId)) {
+                    break;
+                }
+                newId = random.nextInt(maxId) + 1;
+            }
+            assignedIds.add(newId);
+            result.add(new Node(newId));
+        }   //for
+        for (Node firstNode: result) {
+            for (Node secondNode: result) {
+                if (firstNode != secondNode) {
+                    connect(firstNode, secondNode);
+                }   //if
+            }   //for
+        }   //for
+        return result;
+    }
+
+    private static void connect(Node firstNode, Node secondNode) {
+        if (firstNode == null) {
+            return;
+        }   //if
+        if (secondNode == null) {
+            return;
+        }   //if
+        if (firstNode.getNeighbours() == null) {
+            firstNode.addNeighbour(secondNode);
+        } else if (!firstNode.getNeighbours().contains(secondNode)) {
+            firstNode.addNeighbour(secondNode);
+        }   //if
+        if (secondNode.getNeighbours() == null) {
+            secondNode.addNeighbour(firstNode);
+        } else if (!secondNode.getNeighbours().contains(firstNode)) {
+            secondNode.addNeighbour(firstNode);
+        }   //if
     }
 
     public static List<Node> getParticipants(List<Node> allNodes) {
@@ -270,4 +325,12 @@ public class LeaderElectionAlgorithm {
     public static int getWinnersNumber() {
         return winnersNumber;
     }
+
+    public static int getNumberOfEdges(int networkSize) {
+        if (networkSize <= 0) {
+            return 0;
+        }   //if
+        return ((networkSize * (networkSize - 1)) / 2);
+    }
+
 }

@@ -19,4 +19,22 @@
               android:transcriptMode="alwaysScroll"
               android:cacheColorHint="#00000000"
               android:listSelector="@android:color/transparent"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:paddingTop="30dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/btnNewGame"
+            android:text="@string/button_new_game"
+            style="@style/LeaderElectionButtonStyle" />
+    </LinearLayout>
+
 </LinearLayout>
