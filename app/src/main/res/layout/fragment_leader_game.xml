@@ -34,7 +34,7 @@
         <Button
             android:id="@+id/btnNewGame"
             android:text="@string/button_new_game"
-            style="@style/LeaderElectionButtonStyle" />
+            style="@style/LeaderElectionButtonDisabledStyle" />
     </LinearLayout>
 
 </LinearLayout>

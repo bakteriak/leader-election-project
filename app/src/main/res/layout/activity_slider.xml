@@ -10,6 +10,71 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_alignParentBottom="true"
+                  android:layout_marginBottom="60dp"
+                  android:id="@+id/llLanguages"
+                  android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView style="@style/LeaderElectionSliderButtonStyle"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textIsSelectable="false"
+                      android:gravity="right"
+                      android:text="@string/language_setting"
+                      android:paddingRight="15dp"
+                      android:paddingTop="4dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/spinner_bg"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <Spinner
+                    android:id="@+id/spinnerLanguages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:prompt="@string/advanced_language_setting"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/spinner_arrow" />
+
+            </RelativeLayout>
+            <Button
+                android:id="@+id/btnChangeLanguage"
+                android:text="@string/btn_change_language"
+                style="@style/LeaderElectionButtonStyle" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layoutDots"
         android:layout_width="match_parent"
@@ -27,7 +92,7 @@
         android:background="@android:color/white" />
 
     <Button
-        android:id="@+id/btn_next"
+        android:id="@+id/btnNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -37,7 +102,7 @@
         style="@style/LeaderElectionSliderButtonStyle" />
 
     <Button
-        android:id="@+id/btn_skip"
+        android:id="@+id/btnSkip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

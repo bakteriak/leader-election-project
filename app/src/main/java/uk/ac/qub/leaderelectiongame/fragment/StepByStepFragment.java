@@ -88,7 +88,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
     ///initializng network from algorithm and display first step
     private boolean initNodes() {
         try {
-            List<Node> nodesFromAlgorithm = LeaderElectionAlgorithm.initNodes(Consts.PARTICIPANTS_NUMBER);
+            List<Node> nodesFromAlgorithm = LeaderElectionAlgorithm.initNodes(Consts.PARTICIPANTS_NUMBER, getActivity());
             this.nodes = new HashMap<>();
             for (int i = 0; i < rlNetwork.getChildCount(); i++) {
                 View v = rlNetwork.getChildAt(i);
@@ -259,7 +259,7 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
             if (this.nodes == null) {
                 return false;
             }   //if
-            List<Node> winnersFromAlgorithm = LeaderElectionAlgorithm.findWinner(new ArrayList<>(this.nodes.keySet()));
+            List<Node> winnersFromAlgorithm = LeaderElectionAlgorithm.findWinner(new ArrayList<>(this.nodes.keySet()), getActivity());
             for (Node winner: winnersFromAlgorithm) {
                 if (winner.isWinner()) {
                     if (this.nodes.containsKey(winner)) {
@@ -350,9 +350,11 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
                 } else {
                     showNodesFirstStep();
                 }   //else
-                txtStepByStepAlgorithmInfo.setText(String.format(Consts.STEP_BY_STEP_STAGE_ONE_ALGORITHM_INFO,
-                        this.nodes.size(),
-                        LeaderElectionAlgorithm.calculateMaxId(this.nodes.size())));
+                if (getActivity() != null) {
+                    txtStepByStepAlgorithmInfo.setText(String.format(getActivity().getString(R.string.step_by_step_stage_one_algorithm_info),
+                            this.nodes.size(),
+                            LeaderElectionAlgorithm.calculateMaxId(this.nodes.size())));
+                }
                 break;
             case SECOND:
                 if (nodesFromAlgorithm(newStep)) {
@@ -360,8 +362,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
                 } else {
                     showNodesSecondStep();
                 }   //else
-                txtStepByStepAlgorithmInfo.setText(String.format(Consts.STEP_BY_STEP_STAGE_TWO_ALGORITHM_INFO,
-                        LeaderElectionAlgorithm.calculateParticipantProbability(this.nodes.size())));
+                if (getActivity() != null) {
+                    txtStepByStepAlgorithmInfo.setText(String.format(getActivity().getString(R.string.step_by_step_stage_two_algorithm_info),
+                            LeaderElectionAlgorithm.calculateParticipantProbability(this.nodes.size())));
+                }
                 break;
             case THIRD:
                 if (nodesFromAlgorithm(newStep)) {
@@ -369,8 +373,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
                 } else {
                     showNodesThirdStep();
                 }   //else
-                txtStepByStepAlgorithmInfo.setText(String.format(Consts.STEP_BY_STEP_STAGE_THREE_ALGORITHM_INFO,
-                        LeaderElectionAlgorithm.calculateRefereesAmount(this.nodes.size())));
+                if (getActivity() != null) {
+                    txtStepByStepAlgorithmInfo.setText(String.format(getActivity().getString(R.string.step_by_step_stage_three_algorithm_info),
+                            LeaderElectionAlgorithm.calculateRefereesAmount(this.nodes.size())));
+                }   //if
                 break;
             case FOURTH:
                 btnNext.setText(getString(R.string.button_start_over_step_by_step));
@@ -383,13 +389,17 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
                     changeStep(StepByStepStage.FIRST);
                     return;
                 }
-                txtStepByStepAlgorithmInfo.setText(String.format(Consts.STEP_BY_STEP_STAGE_FOUR_ALGORITHM_INFO,
-                        LeaderElectionAlgorithm.findWinnerIdText(new ArrayList<>(this.nodes.keySet()))));
+                if (getActivity() != null) {
+                    txtStepByStepAlgorithmInfo.setText(String.format(getActivity().getString(R.string.step_by_step_stage_four_algorithm_info),
+                            LeaderElectionAlgorithm.findWinnerIdText(new ArrayList<>(this.nodes.keySet()))));
+                }   //if
                 break;
         }
         this.currentStep = newStep;
-        txtStepByStepCaption.setText(this.currentStep.getCaption());
-        txtStepByStepInfo.setText(this.currentStep.getInfo());
+        if (getActivity() != null) {
+            txtStepByStepCaption.setText(getActivity().getString(this.currentStep.getCaptionId()));
+            txtStepByStepInfo.setText(getActivity().getString(this.currentStep.getInfoId()));
+        }   //if
         if (this.stepAchieved < newStep.getNumber()) {
             this.stepAchieved = newStep.getNumber();
         }

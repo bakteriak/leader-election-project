@@ -20,7 +20,7 @@ import uk.ac.qub.leaderelectiongame.fragment.ResearchPaperFragment;
 import uk.ac.qub.leaderelectiongame.fragment.StepByStepFragment;
 import uk.ac.qub.leaderelectiongame.helpers.SettingsManager;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private ResideMenu resideMenu;
     private ResideMenuItem itemHome;
@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resideMenu.setScaleValue(0.6f);
 
         //adding menu items
-        itemHome = new ResideMenuItem(this, R.drawable.icon_home, "Home");
-        itemResearchPaper = new ResideMenuItem(this,R.drawable.icon_research,"Research Paper");
-        itemAbout = new ResideMenuItem(this,R.drawable.icon_about,"About");
-        itemLeaderGame = new ResideMenuItem(this,R.drawable.icon_leader_game,"Leader Game");
-        itemStepByStep = new ResideMenuItem(this,R.drawable.icon_step_by_step,"Step By Step");
-        itemAdvanced = new ResideMenuItem(this, R.drawable.icon_advanced, "Advanced");
-        itemHelp = new ResideMenuItem(this, R.drawable.icon_question_mark, "Help");
+        itemHome = new ResideMenuItem(this, R.drawable.icon_home, getString(R.string.menu_home));
+        itemResearchPaper = new ResideMenuItem(this,R.drawable.icon_research, getString(R.string.menu_research_paper));
+        itemAbout = new ResideMenuItem(this,R.drawable.icon_about, getString(R.string.menu_about));
+        itemLeaderGame = new ResideMenuItem(this,R.drawable.icon_leader_game, getString(R.string.menu_leader_game));
+        itemStepByStep = new ResideMenuItem(this,R.drawable.icon_step_by_step, getString(R.string.menu_step_by_step));
+        itemAdvanced = new ResideMenuItem(this, R.drawable.icon_advanced, getString(R.string.menu_advanced));
+        itemHelp = new ResideMenuItem(this, R.drawable.icon_question_mark, getString(R.string.menu_help));
 
         itemHome.setOnClickListener(this);
         itemResearchPaper.setOnClickListener(this);
@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resideMenu.addMenuItem(itemResearchPaper,ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemAbout, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemHelp, ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemLeaderGame, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemStepByStep, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemAdvanced, ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemLeaderGame, ResideMenu.DIRECTION_RIGHT);
 
         findViewById(R.id.title_bar_left_menu).setOnClickListener(new View.OnClickListener() {
             @Override

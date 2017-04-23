@@ -1,0 +1,155 @@
+<resources>
+    <string name="app_name">Игра Выборы Лидера</string>
+
+    <!-- Main Activity String -->
+    <string name="reside_menu">Главное Меню</string>
+    <string name="permission_message">Пожалуйста добавьте разрешения</string>
+
+    <!-- Research Paper String -->
+    <string name="button_next_research_paper">Следующий</string>
+    <string name="button_previous_research_paper">Предыдущий</string>
+
+    <!-- Home Fragment String -->
+    <string name="text_swipe_right_left_to_open_menu">Проведите пальцем вправо/влево чтобы открыть главное меню</string>
+    <string name="leader_election_game">Игра Выборы Лидера</string>
+
+    <!-- Step By Step Fragment String -->
+    <string name="button_next_step_by_step">Следующий</string>
+    <string name="button_previous_step_by_step">Предыдущий</string>
+    <string name="button_reset_step_by_step">Сброс</string>
+    <string name="button_start_over_step_by_step">Начать сначала</string>
+
+    <string name="popup_node_winner">Победитель: </string>
+    <string name="popup_node_referee">Судья: </string>
+    <string name="popup_node_candidates_to_referee">Судья выбран: </string>
+    <string name="popup_node_participant">Участники: </string>
+    <string name="popup_node_id">Идентификатор узла: </string>
+
+    <string name="title_activity_step_by_step">ПошаговаяАктивность</string>
+
+    <string name="step_by_step_stage_one_caption">Шаг один: Создание сети</string>
+    <string name="step_by_step_stage_two_caption">Шаг два: Участники</string>
+    <string name="step_by_step_stage_three_caption">Шаг три: Судьи</string>
+    <string name="step_by_step_stage_four_caption">Шаг четыре: Выборы</string>
+
+    <string name="step_by_step_stage_one_explanation">Мы создали сеть с десятью узлами, каждому узлу присвоен уникальный идентификатор.</string>
+    <string name="step_by_step_stage_two_explanation">Все зеленые узлы принимают участие.</string>
+    <string name="step_by_step_stage_three_explanation">Каждый следующий участник должен выбрать судей. Узлы с синими границами это судьи.</string>
+    <string name="step_by_step_stage_four_explanation">Теперь у нас есть победитель.</string>
+
+    <string name="step_by_step_stage_one_algorithm_info" formatted="false">Размер сети: %d. Каждый узел создан с произвольным рангом от {1,...,pow(n,4)} = {1,...,%d}</string>
+    <string name="step_by_step_stage_two_algorithm_info" formatted="false">Каждый узел решил стать участником с вероятностью ((2 * log n)/n) = %4.2f.</string>
+    <string name="step_by_step_stage_three_algorithm_info" formatted="false">Выборка участников 2 * ceil(sqrt(n * log10(n))) = %d других узлов (судей) и отсылка сообщений с рангом каждому судье.</string>
+    <string name="step_by_step_stage_four_algorithm_info" formatted="false">Судьи выбрали узел с идентификатором: %s как победителя.</string>
+
+    <!-- About Fragment String -->
+    <string name="text_about">Главная цель этого проекта продемонстрировать алгоритм выбора лидера используя Java на Android устройстве. Алгоритм использованный для этого проекта будет рандомизированные сублинейный выбор лидера распределенный среди участников из группы в n узлов.\n\n
+        Выборы Лидера это одна из наиболее фундаментальных проблем распределенных систем. Идея в том чтобы выбрать один из узлов сети лидером и позволить ему решить критическую проблему дня и потом распределить решение по остальной сети. Это проблема впервые появилась в token ring сети впервые представленной Ли Леном (1977). \n\n
+Алгоритм выбора лидера имеет 99% вероятность правильности, однако есть большая вероятность того что он может провалиться на маленьких сетях. \n\n
+Все узлы начинают в одном состоянии - не выбрано. Один узел должен выбрать лидера. Ему дается особый статус в качестве временного лидера для заданных n-узлов. Все остальные узлы в сети должны изменить свой статус на не-лидер. Этим узлам необходимо знать личность лидера.\n\n
+Если какой-либо узел сети уходит в отставку по какой-либо причине, алгоритм должен распознать потерю узла и избежать взаимоблокировки, удалив этот узел из сети без нарушения цикла.\n\n
+Этот алгоритм будет использовать синхронную связь, каждый узел может отправлять только одно сообщение. Все узлы, принимающие участие, запускаются вместе в одно и то же время. Некоторые узлы будут выступать в качестве судей, а некоторые - в качестве кандидатов.\n\n
+Каждый узел может отправлять и получать не более одного сообщения своему соседу, но отправленное сообщение должно быть получено только в том же раунде. В первом раунде каждый участвующий узел станет кандидатом. Судья уведомляет кандидата о победе и тот становится избранным лидером. \n\n
+Алгоритмы используют парадокс дня рождения, чтобы показать, что уникальный узел-кандидат выигрывает все соревнования с высокой вероятностью.</string>
+
+    <!-- Leader Game Fragment String -->
+    <string name="server_connection_error">Произошла ошибка - невозможно подключится к серверу. Попробуйте позднее.</string>
+    <string name="button_new_game">Новая игра</string>
+    <string name="button_game_in_progress">В процессе...</string>
+    <string name="network_connection_error">Ваше устройство не имеет подключения к Интернет - игра может не работать правильно... Пожалуйста, попробуйте подключиться к сети и попробовать снова.</string>
+    <string name="network_connection_info">Игра Выборы Лидера требует подключения к Интернет чтобы общаться с игровым сервером. Проверяем подключение к сети...</string>
+    <string name="network_connection_ok">Соединение с Интернет проверено. Нажмите кнопку чтобы присоединиться к игре.</string>
+    <string name="game_server_connection_error" formatted="false">Сервер не отвечает - таймаут... Пожалуйста, проверьте следующие параметры. IP адрес: %s, порт: %d</string>
+
+    <!-- About Fragment String -->
+
+
+    <!-- Advanced Fragment String -->
+    <string name="advanced_caption">В этом разделе мы пытаемся измерить производительность алгоритма выбора произвольного лидера. Пожалуйста, выберите размер сети и количество запусков алгоритма из списка ниже и нажмите кнопку «Выполнить», чтобы увидеть результаты.</string>
+    <string name="network_size">Размер сети:</string>
+    <string name="algorithm_runs">Количество запусков:</string>
+    <string name="advanced_select_network_size_prompt">Выберите рамер сети</string>
+    <string name="advanced_select_runs_prompt">Выберите количество запусков алгоритма</string>
+    <string-array name="advanced_network_size_arrays">
+        <item>10</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+        <item>100000</item>
+        <item>1000000</item>
+    </string-array>
+    <string-array name="advanced_algorithm_run_arrays">
+        <item>1</item>
+        <item>10</item>
+        <item>50</item>
+        <item>100</item>
+        <item>1000</item>
+    </string-array>
+    <string name="button_run_performance">Выполнить</string>
+    <string name="min_node_candidates_percentage">Min кандидатов %:</string>
+    <string name="max_node_candidates_percentage">Max кандидатов %:</string>
+    <string name="avg_node_candidates_percentage">Avg кандидатов %:</string>
+    <string name="referees_number">Количество судей:</string>
+    <string name="winners_number">Количество победителей:</string>
+    <string name="total_algorithm_run_time">Общее время:</string>
+    <string name="min_algorithm_run_time">Min время алгоритма:</string>
+    <string name="max_algorithm_run_time">Max время алгоритма:</string>
+    <string name="avg_algorithm_run_time">Avg время алгоритма:</string>
+    <string name="improper_algorithm_params">Введены невалидные параметры. Пожалуйста, выберете правильные параметры.</string>
+    <string name="performance_test_in_progress">Проводим тест производительности. Пожалуйста, подождите чтобы увидеть результаты.</string>
+    <string name="performance_test_error">Тест производительности завершен с ошибками. Пожалуйста, попробуйте снова.</string>
+    <string name="performance_progress_info_init_nodes" formatted="false">Запуск итерации %d из %d: Инициализация сети...</string>
+    <string name="performance_progress_info_get_participants" formatted="false">Запуск итерации %d из %d: Поиск участников...</string>
+    <string name="performance_progress_info_get_referees" formatted="false">Запуск итерации %d из %d: Выбор судей...</string>
+    <string name="performance_progress_info_nominating_winners" formatted="false">Запуск итерации %d из %d: Определение победителей...</string>
+
+
+    <!-- Slider String -->
+    <string name="next">СЛЕДУЮЩИЙ</string>
+    <string name="skip">ПРОПУСТИТЬ</string>
+    <string name="start">ПОНЯЛ</string>
+    <string name="slider_subtitle">Как это работает?</string>
+
+    <string name="slide_1_title">Домой</string>
+    <string name="slide_1_desc">Проведите влево/вправо чтобы открыть меню или нажмите на кнопки наверху!</string>
+
+    <string name="slide_2_title">Научно-исследовательская работа</string>
+    <string name="slide_2_desc">Подробнее о рандомизированном алгоритме сублинейного выбора лидеров!</string>
+
+    <string name="slide_3_title">О программе</string>
+    <string name="slide_3_desc">Читать больше о проекте!</string>
+
+    <string name="slide_4_title">Игра Выбора Лидера</string>
+    <string name="slide_4_desc">Сыграйте в многопользовательскую игру выбора лидера!</string>
+
+    <string name="slide_5_title">Шаг за шагом</string>
+    <string name="slide_5_desc">Отслеживать каждый этап алгоритма выбора лидеров с подробным объяснением!</string>
+
+    <string name="slide_6_title">Продвинутый</string>
+    <string name="slide_6_desc">Измерьте эффективность алгоритма выбора лидеров!</string>
+
+    <!-- Custom -->
+    <string name="algorithm_error_too_many_participants">Слишком много участников (или максимальный идентификатор слишком низкий).</string>
+    <string name="algorithm_error_referee_cannot_nominate_winner">Единственный судья не смог номинировать победителя...</string>
+    <string name="algorithm_error_referees_cannot_nominate_winner">Все судьи не могут номинировать лидера...</string>
+    <string name="language_setting">Язык:</string>
+    <string name="advanced_language_setting">Выбрать язык</string>
+    <string name="btn_change_language">Изменить</string>
+
+    <string-array name="language_select">
+        <item>английский</item>
+        <item>Польский</item>
+		<item>Немецкий</item>
+		<item>русский</item>
+    </string-array>
+
+    <string name="menu_home">Домой</string>
+    <string name="menu_research_paper">Научно-исследовательская работа</string>
+    <string name="menu_about">О программе</string>
+    <string name="menu_leader_game">Игра Выбора Лидера</string>
+    <string name="menu_step_by_step">Шаг за шагом</string>
+    <string name="menu_advanced">Продвинутый</string>
+    <string name="menu_help">Помощь</string>
+
+
+</resources>

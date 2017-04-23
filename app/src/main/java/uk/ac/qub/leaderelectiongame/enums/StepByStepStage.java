@@ -1,39 +1,39 @@
 package uk.ac.qub.leaderelectiongame.enums;
 
 
-import uk.ac.qub.leaderelectiongame.consts.Consts;
+import uk.ac.qub.leaderelectiongame.R;
 
 public enum StepByStepStage {
 
     FIRST(1,
-            Consts.STEP_BY_STEP_STAGE_ONE_CAPTION,
-            Consts.STEP_BY_STEP_STAGE_ONE_EXPLANATION),
+            R.string.step_by_step_stage_one_caption,
+            R.string.step_by_step_stage_one_explanation),
     SECOND(2,
-            Consts.STEP_BY_STEP_STAGE_TWO_CAPTION,
-            Consts.STEP_BY_STEP_STAGE_TWO_EXPLANATION),
+            R.string.step_by_step_stage_two_caption,
+            R.string.step_by_step_stage_two_explanation),
     THIRD(3,
-            Consts.STEP_BY_STEP_STAGE_THREE_CAPTION,
-            Consts.STEP_BY_STEP_STAGE_THREE_EXPLANATION),
+            R.string.step_by_step_stage_three_caption,
+            R.string.step_by_step_stage_three_explanation),
     FOURTH(4,
-            Consts.STEP_BY_STEP_STAGE_FOUR_CAPTION,
-            Consts.STEP_BY_STEP_STAGE_FOUR_EXPLANATION);
+            R.string.step_by_step_stage_four_caption,
+            R.string.step_by_step_stage_four_explanation);
 
-    private final String caption;
-    private final String info;
+    private int captionId;
+    private int infoId;
     private final int number;
 
-    StepByStepStage(int number, String caption, String info) {
+    StepByStepStage(int number, int captionId, int infoId) {
         this.number = number;
-        this.caption = caption;
-        this.info = info;
+        this.captionId = captionId;
+        this.infoId = infoId;
     }
 
-    public String getCaption() {
-        return caption;
+    public int getCaptionId() {
+        return captionId;
     }
 
-    public String getInfo() {
-        return info;
+    public int getInfoId() {
+        return infoId;
     }
 
     public int getNumber() {

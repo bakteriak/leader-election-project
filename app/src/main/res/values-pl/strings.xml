@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Leader Election Game</string>
+    <string name="advanced_caption">W poniższej sekcji próbujemy zmierzyć wydajność algorytmu losowego wyboru lidera. Proszę wybrać rozmiar sieci oraz liczbę iteracji algorytmu i kliknąć \'Start\'.</string>
+    <string name="advanced_select_network_size_prompt">Wybierz rozmiar sieci</string>
+    <string name="advanced_select_runs_prompt">Wybierz liczbę iteracji.</string>
+    <string-array name="advanced_network_size_arrays">
+        <item>10</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+        <item>100000</item>
+        <item>1000000</item>
+    </string-array>
+    <string-array name="advanced_algorithm_run_arrays">
+        <item>1</item>
+        <item>10</item>
+        <item>50</item>
+        <item>100</item>
+        <item>1000</item>
+    </string-array>
+    <string name="algorithm_error_referee_cannot_nominate_winner">Sędziemu nie udało się nominowac zwycięzcy...</string>
+    <string name="algorithm_error_referees_cannot_nominate_winner">Sędziom nie udało się nominowac zwycięzcy...</string>
+    <string name="algorithm_error_too_many_participants">Zbyt wielu uczestników (albo zbyt niskie max id).</string>
+    <string name="algorithm_runs">Liczba iteracji:</string>
+    <string name="avg_algorithm_run_time">Średni czas algorytmu:</string>
+    <string name="avg_node_candidates_percentage">Średni % kandydatów:</string>
+    <string name="button_game_in_progress">W toku...</string>
+    <string name="button_new_game">Nowa gra</string>
+    <string name="button_next_research_paper">Dalej</string>
+    <string name="button_next_step_by_step">Dalej</string>
+    <string name="button_previous_research_paper">Wstecz</string>
+    <string name="button_previous_step_by_step">Wstecz</string>
+    <string name="button_reset_step_by_step">Reset</string>
+    <string name="button_run_performance">Start</string>
+    <string name="button_start_over_step_by_step">Od nowa</string>
+    <string name="improper_algorithm_params">Parametry wejściowe algorytmu nie wyglądaja na poprawne. Proszę wybrać odpowiednie wartości z list wyboru.</string>
+    <string name="leader_election_game">Leader Election Game</string>
+    <string name="max_algorithm_run_time">Max czas algorytmu:</string>
+    <string name="max_node_candidates_percentage">Max % kandydatów:</string>
+    <string name="min_node_candidates_percentage">Min % kandydatów:</string>
+    <string name="min_algorithm_run_time">Min czas algorytmu:</string>
+    <string name="network_connection_error">Wygląda na to, że Twoje urządzenie nia ma połączenia z Internetem w tym momencie - gra może nie działać poprawnie... Proszę nawiązać połączenie i spróbować ponownie.</string>
+    <string name="network_connection_info">Gra algorytm losowego wyboru lidera wymaga połączenia z Internetem celem poprawnej komunikacji z serwerem. Sprawdzanie stanu łączności Twojego urządzenia...</string>
+    <string name="network_connection_ok">Połączenie z Internetem wygląda ok. Proszę wcisnąć Nowa Gra, aby rozpocząć grę. Komunikaty w grze będą w języku angielskim.</string>
+    <string name="network_size">Rozmiar sieci:</string>
+    <string name="next">DALEJ</string>
+    <string name="performance_progress_info_get_participants" formatted="false">Trwa iteracja %d z %d: Typowanie uczestników...</string>
+    <string name="performance_progress_info_get_referees" formatted="false">Trwa iteracja %d z %d: Nominowanie sędziów...</string>
+    <string name="performance_progress_info_init_nodes" formatted="false">Trwa iteracja %d z %d: Inicjowanie sieci...</string>
+    <string name="performance_progress_info_nominating_winners" formatted="false">Trwa iteracja %d z %d: Nominowanie zwycięzców...</string>
+    <string name="performance_test_error">Test wydajności zakończony z błędami. Proszę spróbować ponownie.</string>
+    <string name="performance_test_in_progress">Test wydajności w toku. Proszę poczekać chwilę, aby zobaczyć wyniki.</string>
+    <string name="permission_message">Proszę wyrazić stosowne zgody dla aplikacji.</string>
+    <string name="popup_node_candidates_to_referee">Sędzia nominowany przez:</string>
+    <string name="popup_node_id">Id węzła:</string>
+    <string name="popup_node_participant">Uczestnik:</string>
+    <string name="popup_node_referee">Sędzia:</string>
+    <string name="popup_node_winner">Zwycięzca:</string>
+    <string name="referees_number">Liczba sędziów:</string>
+    <string name="reside_menu">Menu Główne</string>
+    <string name="server_connection_error">Error occurred - unable to connect server. Please try again.</string>
+    <string name="skip">POMIŃ</string>
+    <string name="slide_1_desc">Przeciągnij lewo/prawo, aby otworzyć menu lub kliknij przyciski na górze ekranu!</string>
+    <string name="slide_1_title">Start</string>
+    <string name="slide_2_desc">Przeczytaj więcej na temat algorytmu losowego wyboru lidera!</string>
+    <string name="slide_2_title">Badania naukowe</string>
+    <string name="slide_3_desc">Przeczytaj więcej na temat projektu!</string>
+    <string name="slide_3_title">Opis aplikacji</string>
+    <string name="slide_4_desc">Zagraj w algorytm losowego lidera w wersji gry dla wielu graczy!</string>
+    <string name="slide_4_title">Gra dla wielu osób</string>
+    <string name="slide_5_desc">Prześledź każdy etap algorytmu losowego wyboru lidera wraz ze szczegółowym wyjaśnieniem!</string>
+    <string name="slide_5_title">Krok po kroku</string>
+    <string name="slide_6_desc">Zmierz wydajność algorytmu losowego wyboru lidera!</string>
+    <string name="slide_6_title">Analiza</string>
+    <string name="slider_subtitle">Jak to działa?</string>
+    <string name="start">ROZUMIEM</string>
+
+    <string name="step_by_step_stage_four_algorithm_info" formatted="false">Sędziowie nominowali węzeł z id: %s na zwycięzcę.</string>
+    <string name="step_by_step_stage_four_caption">Krok czwarty: wybór zwycięzcy</string>
+    <string name="step_by_step_stage_four_explanation">Mamy naszego zwyciezcę.</string>
+    <string name="step_by_step_stage_one_algorithm_info" formatted="false">Rozmiar sieci: %d. Każdy węzeł generuje losową wartość w przedziale {1,...,pow(n,4)} = {1,...,%d}</string>
+    <string name="step_by_step_stage_one_caption">Krok pierwszy: tworzenie sieci</string>
+    <string name="step_by_step_stage_one_explanation">Stworzyliśmy sieć z dziesięcioma węzłami, każdy węzeł posiada losowe id.</string>
+    <string name="step_by_step_stage_three_algorithm_info" formatted="false">Każdy uczestnik nominuje 2 * ceil(sqrt(n * log10(n))) = %d innych węzłów (sędziów) i wysyła komunikat ze swoim id do tych sędziów.</string>
+    <string name="step_by_step_stage_three_caption">Krok trzeci: Sędziowie</string>
+    <string name="step_by_step_stage_three_explanation">Następnie każdy uczestnik wybiera sędziów. Węzły z niebieską obwódką to sędziowie.</string>
+    <string name="step_by_step_stage_two_algorithm_info" formatted="false">Każdy węzeł zostaje z uczestnikiem lub nie z prawdopodobieństwem ((2 * log n)/n) = %4.2f.</string>
+    <string name="step_by_step_stage_two_caption">Krok drugi: Uczestnicy</string>
+    <string name="step_by_step_stage_two_explanation">Wszystkie węzły w zielonym kolorze biorą udział.</string>
+    <string name="text_about">Głównym celem tego projektu jest pokazanie problemu z algorytmem wyborczym lidera przy użyciu oprogramowania Java na urządzeniach z Androidem. Algorytm stosowany w tym projekcie będzie losowy liniowy wybór liderów podrzędnych, który jest rozdzielany między uczestników poprzez grupę węzłów n. \n\n
+    Wybór lidera jest jednym z najbardziej podstawowych problemów w systemach rozproszonych. Chodzi o wybranie jednego z węzłów w sieci, jako lidera i pozwala rozwiązać krytyczny problem dnia, a następnie przekazać rozwiązanie do reszty sieci. Ten problem występuje przede wszystkim w sieci o topologii token-ring zaprezentowane przez Le Lanna (1977). \n\n
+    Algorytm wyboru liderów ma 99% poprawności, ale istnieje duże prawdopodobieństwo, że może on zawieść w mniejszych sieciach. \n\n
+    Wszystkie węzły zaczynają się od tego samego stanu niewybranego. Jeden węzeł musi zdecydować, że jest liderem. Otrzymuje się wówczas specjalny status, jako zmienny lider danego n-węzła. Wszystkie pozostałe węzły w sieci muszą zmienić swoją zmienną na nie-lidera. Te węzły muszą znać tożsamość lidera. \n\n
+    Jeśli jeden z węzłów w sieci zignoruje się z jakiegoś powodu, algorytm powinien rozpoznać utratę węzła i uniknąć zakleszczenia poprzez usunięcie tego węzła z sieci bez naruszania cyklu. \n\n
+    Ten algorytm wykorzystuje komunikację synchroniczną, każdy węzeł może wysłać tylko jedną wiadomość. Każdy węzeł biorący udział rozpocznie się razem w tym samym czasie. Niektóre węzły będą działały jako sędzia, a inne jako kandydaci.\n\n
+    Każdy węzeł może wysyłać i odbierać, co najmniej jedną wiadomość do sąsiada, ale wysłana wiadomość musi być odbierana tylko w tej samej rundzie. W pierwszej rundzie każdy węzeł uczestniczący będzie kandydatem. Sędzia poinformuje kandydata o zwycięstwie i stanie się wybranym liderem. \n\n
+    Algorytmy używają argumentu typu paradoks urodzinowy, aby wykazać, że unikalny węzeł kandydata wygra wszystkie konkursy z dużym prawdopodobieństwem..</string>
+    <string name="text_swipe_right_left_to_open_menu">Przeciągnij lewo/prawo, aby otworzyć menu</string>
+    <string name="title_activity_step_by_step">StepByStepActivity</string>
+    <string name="total_algorithm_run_time">Łączny czas:</string>
+    <string name="winners_number">Liczba zwycięzców:</string>
+    <string name="language_setting">Język:</string>
+    <string name="advanced_language_setting">Proszę wybrać język</string>
+    <string name="btn_change_language">Zmień</string>
+
+    <string-array name="language_select">
+        <item>Angielski</item>
+        <item>Polski</item>
+		<item>Niemiecki</item>
+		<item>Rosyjski</item>
+    </string-array>
+
+    <string name="menu_home">Start</string>
+    <string name="menu_research_paper">Badania naukowe</string>
+    <string name="menu_about">Opis aplikacji</string>
+    <string name="menu_leader_game">Gra dla wielu osób</string>
+    <string name="menu_step_by_step">Krok po kroku</string>
+    <string name="menu_advanced">Analiza</string>
+    <string name="menu_help">Pomoc</string>
+    <string name="game_server_connection_error" formatted="false">Serwer gry nie odpowiedział poprawnie... Proszę sprawdzić poprawność następujących parametrów - adres IP: %s, port: %d.</string>
+</resources>

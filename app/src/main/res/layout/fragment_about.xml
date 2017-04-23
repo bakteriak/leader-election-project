@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/nodeRefereeBorder"
     tools:context="uk.ac.qub.leaderelectiongame.fragment.AboutFragment">
 
     <ScrollView
@@ -30,12 +30,11 @@
                 app:srcCompat="@drawable/queens_university_belfast" />
 
             <TextView
-                android:id="@+id/textViewAbout"
-                android:text="@string/about_textview"
+                style="@style/LeaderElectionFontStyleInfo"
+                android:text="@string/text_about"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="190dp"
-                android:textColor="@color/white"
                  />
         </FrameLayout>
     </ScrollView>

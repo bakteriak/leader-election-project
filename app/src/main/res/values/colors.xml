@@ -45,6 +45,8 @@
     <color name="slider5DotLight">#B2CCB2</color>
     <color name="slider6DotLight">#CC7F99</color>
 
+    <color name="btnGreyedOut">#808080</color>
+
     <array name="array_dot_active">
         <item>@color/slider1DotLight</item>
         <item>@color/slider2DotLight</item>

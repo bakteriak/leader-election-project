@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import uk.ac.qub.leaderelectiongame.R;
 import uk.ac.qub.leaderelectiongame.async.GameConnectionAsyncTask;
+import uk.ac.qub.leaderelectiongame.async.NetworkCheckAsyncTask;
 import uk.ac.qub.leaderelectiongame.game.GameAdapter;
 
 
@@ -48,7 +49,8 @@ public class LeaderGameFragment extends Fragment {
             gameAdapter = new GameAdapter(getActivity(), messages);
             lvGameList.setAdapter(gameAdapter);
         }   //if
-        handleButtonsEvents();
+        communicateNetworkInfo();
+        initApp();
         return v;
     }
 
@@ -62,32 +64,33 @@ public class LeaderGameFragment extends Fragment {
 
     private void connect() {
         stopConnectionTask();
-        gameConnectionAsyncTask = new GameConnectionAsyncTask()
-        {
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                btnNewGame.setEnabled(false);
-            }
+        if (getActivity() != null) {
+            gameConnectionAsyncTask = new GameConnectionAsyncTask(getActivity()) {
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                    disableButton();
+                }
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                btnNewGame.setEnabled(true);
-            }
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    super.onPostExecute(aVoid);
+                    enableButton();
+                }
 
-            @Override
-            protected void onProgressUpdate(String... values) {
-                if (values == null) {
-                    return;
-                }   //if
-                if (values.length == 0) {
-                    return;
-                }   //if
-                messages.add(values[0]);
-                gameAdapter.notifyDataSetChanged();
-            }
-        }.execute();
+                @Override
+                protected void onProgressUpdate(String... values) {
+                    if (values == null) {
+                        return;
+                    }   //if
+                    if (values.length == 0) {
+                        return;
+                    }   //if
+                    messages.add(values[0]);
+                    gameAdapter.notifyDataSetChanged();
+                }
+            }.execute();
+        }   //if
     }
 
     @Override
@@ -101,4 +104,55 @@ public class LeaderGameFragment extends Fragment {
             gameConnectionAsyncTask.cancel(true);
         }   //if
     }
+
+    private void initApp() {
+        new NetworkCheckAsyncTask()
+        {
+            @Override
+            public void onPostExecute(Boolean result) {
+                if (result == null) {
+                    communicateNetworkError();
+                    return;
+                }
+                if (!result) {
+                    communicateNetworkError();
+                    return;
+                }   //if
+                communicateNetworkOk();
+                handleButtonsEvents();
+                enableButton();
+            }
+
+        }.execute();
+    }
+
+    private void communicateNetworkError() {
+        messages.add(getString(R.string.network_connection_error));
+        gameAdapter.notifyDataSetChanged();
+    }
+
+    private void communicateNetworkInfo() {
+        messages.add(getString(R.string.network_connection_info));
+        gameAdapter.notifyDataSetChanged();
+    }
+
+    private void communicateNetworkOk() {
+        messages.add(getString(R.string.network_connection_ok));
+        gameAdapter.notifyDataSetChanged();
+    }
+
+    private void disableButton() {
+        btnNewGame.setEnabled(false);
+        btnNewGame.setClickable(false);
+        btnNewGame.setBackgroundResource(R.drawable.btn_shape_disabled);
+        btnNewGame.setText(getString(R.string.button_game_in_progress));
+    }
+
+    private void enableButton() {
+        btnNewGame.setEnabled(true);
+        btnNewGame.setClickable(true);
+        btnNewGame.setBackgroundResource(R.drawable.btn_shape);
+        btnNewGame.setText(getString(R.string.button_new_game));
+    }
+
 }

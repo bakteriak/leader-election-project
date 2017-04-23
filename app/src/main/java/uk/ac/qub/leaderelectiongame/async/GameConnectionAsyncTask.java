@@ -1,5 +1,6 @@
 package uk.ac.qub.leaderelectiongame.async;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,6 +13,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
+import uk.ac.qub.leaderelectiongame.R;
 import uk.ac.qub.leaderelectiongame.consts.Consts;
 import uk.ac.qub.leaderelectiongame.game.CipherSocket;
 
@@ -23,6 +25,12 @@ public class GameConnectionAsyncTask extends AsyncTask<Void, String, Void> {
     private static final int TIMEOUT_MS = 3000;
 
     private static final String TAG = "GameConnectionAsyncTask";
+
+    private Context context;
+
+    public GameConnectionAsyncTask(Context context){
+        this.context = context;
+    }
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -59,7 +67,7 @@ public class GameConnectionAsyncTask extends AsyncTask<Void, String, Void> {
                     }   //if
                 }
             } catch (SocketTimeoutException ex) {
-                publishProgress(String.format("Server did not respond properly - timeout... Please, check if these parameters are correct. IP address: %s, port: %d", SERVER_IP, SERVER_PORT));
+                publishProgress(String.format(context.getString(R.string.game_server_connection_error) , SERVER_IP, SERVER_PORT));
                 Log.e(TAG, "S: Error", ex);
             } catch (IOException ex) {
                 publishProgress("Error occurred during the connection with server...");

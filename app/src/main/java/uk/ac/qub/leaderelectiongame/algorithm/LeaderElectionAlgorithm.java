@@ -1,5 +1,7 @@
 package uk.ac.qub.leaderelectiongame.algorithm;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -7,6 +9,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import uk.ac.qub.leaderelectiongame.R;
 import uk.ac.qub.leaderelectiongame.consts.Consts;
 import uk.ac.qub.leaderelectiongame.exceptions.LeaderElectionException;
 import uk.ac.qub.leaderelectiongame.model.Node;
@@ -20,7 +23,10 @@ public class LeaderElectionAlgorithm {
     private static List<Node> referees = new ArrayList<>();
     private static List<Node> participants = new ArrayList<>();
 
-    public static List<Node> initNodes(int participantsNumber) throws LeaderElectionException {
+    public static List<Node> initNodes(int participantsNumber, Context context) throws LeaderElectionException {
+        if (context == null) {
+            return new ArrayList<>();
+        }   //if
         List<Node> result = new ArrayList<>();
         LeaderElectionAlgorithm.candidatesNumber = 0;
         LeaderElectionAlgorithm.winnersNumber = 0;
@@ -31,7 +37,7 @@ public class LeaderElectionAlgorithm {
         }   //if
         int maxId = calculateMaxId(participantsNumber);
         if (participantsNumber > maxId) {
-            throw new LeaderElectionException(Consts.ALGORITHM_ERROR_TOO_MANY_PARTICIPANTS);
+            throw new LeaderElectionException(context.getResources().getString(R.string.algorithm_error_too_many_participants));
         }   //if
         Set<Integer> assignedIds = new HashSet<>();
         for (int i = 0; i < participantsNumber; i++) {
@@ -48,7 +54,10 @@ public class LeaderElectionAlgorithm {
         return result;
     }
 
-    public static List<Node> initNodesWithNeighbours(int participantsNumber) throws LeaderElectionException {
+    public static List<Node> initNodesWithNeighbours(int participantsNumber, Context context) throws LeaderElectionException {
+        if (context == null) {
+            return new ArrayList<>();
+        }   //if
         List<Node> result = new ArrayList<>();
         LeaderElectionAlgorithm.candidatesNumber = 0;
         LeaderElectionAlgorithm.winnersNumber = 0;
@@ -59,7 +68,7 @@ public class LeaderElectionAlgorithm {
         }   //if
         int maxId = calculateMaxId(participantsNumber);
         if (participantsNumber > maxId) {
-            throw new LeaderElectionException(Consts.ALGORITHM_ERROR_TOO_MANY_PARTICIPANTS);
+            throw new LeaderElectionException(context.getResources().getString(R.string.algorithm_error_too_many_participants));
         }   //if
         Set<Integer> assignedIds = new HashSet<>();
         for (int i = 0; i < participantsNumber; i++) {
@@ -211,7 +220,10 @@ public class LeaderElectionAlgorithm {
     }
 
     ///single referee nominates winner
-    private static List<Node> nominateWinner(Node currentReferee, List<Node> allNodes) throws LeaderElectionException {
+    private static List<Node> nominateWinner(Node currentReferee, List<Node> allNodes, Context context) throws LeaderElectionException {
+        if (context == null) {
+            return new ArrayList<>();
+        }   //if
         if (allNodes == null) {
             return new ArrayList<>();
         }   //if
@@ -237,13 +249,16 @@ public class LeaderElectionAlgorithm {
         if (highestIdIndex >= 0) {
             allNodes.get(highestIdIndex).incNumberOfNominations();
         } else {    //if
-            throw new LeaderElectionException(Consts.ALGORITHM_ERROR_REFEREE_CANNOT_NOMINATE_WINNER);
+            throw new LeaderElectionException(context.getResources().getString(R.string.algorithm_error_referee_cannot_nominate_winner));
         }   //else
         return allNodes;
     }
 
     ///finding winner
-    public static List<Node> findWinner(List<Node> allNodes) throws LeaderElectionException {
+    public static List<Node> findWinner(List<Node> allNodes, Context context) throws LeaderElectionException {
+        if (context == null) {
+            return new ArrayList<>();
+        }   //if
         if ((allNodes == null) || (LeaderElectionAlgorithm.referees == null) || (LeaderElectionAlgorithm.participants == null)) {
             return new ArrayList<>();
         }   //if
@@ -253,7 +268,7 @@ public class LeaderElectionAlgorithm {
         List<Node> result = allNodes;
         ///nominating winners
         for (Node node: LeaderElectionAlgorithm.referees) {
-            result = nominateWinner(node, result);
+            result = nominateWinner(node, result, context);
         }   //for
         int winnerIndex = -1;
         int highestNominationNum = -1;
@@ -273,7 +288,7 @@ public class LeaderElectionAlgorithm {
         if (winnerIndex >= 0) {
             allNodes.get(winnerIndex).setWinner(true);
         } else {    //if
-            throw new LeaderElectionException(Consts.ALGORITHM_ERROR_REFEREES_CANNOT_NOMINATE_WINNER);
+            throw new LeaderElectionException(context.getResources().getString(R.string.algorithm_error_referees_cannot_nominate_winner));
         }   //else
         LeaderElectionAlgorithm.winnersNumber = winners.size();
         return allNodes;

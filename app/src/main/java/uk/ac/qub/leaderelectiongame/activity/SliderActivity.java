@@ -1,9 +1,15 @@
 package uk.ac.qub.leaderelectiongame.activity;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.LocaleList;
+import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,29 +18,37 @@ import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import uk.ac.qub.leaderelectiongame.R;
+import uk.ac.qub.leaderelectiongame.consts.Consts;
 import uk.ac.qub.leaderelectiongame.helpers.SettingsManager;
 
 
-public class SliderActivity extends AppCompatActivity {
+public class SliderActivity extends BaseActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-    private Button btnSkip, btnNext;
-    private SettingsManager settingsManager;
+    private Button btnSkip, btnNext, btnChangeLanguage;
+
+    private Spinner languageSpinner;
+    private LinearLayout llLanguges;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        settingsManager = new SettingsManager(this);
-        if (!settingsManager.showHelpSlider()) {
+
+        if (!getSettingsManager().showHelpSlider()) {
             launchHomeScreen();
             finish();
         }
@@ -48,8 +62,14 @@ public class SliderActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = (Button) findViewById(R.id.btn_skip);
-        btnNext = (Button) findViewById(R.id.btn_next);
+        btnSkip = (Button) findViewById(R.id.btnSkip);
+        btnNext = (Button) findViewById(R.id.btnNext);
+        btnChangeLanguage = (Button) findViewById(R.id.btnChangeLanguage);
+        languageSpinner = (Spinner) findViewById(R.id.spinnerLanguages);
+        llLanguges = (LinearLayout) findViewById(R.id.llLanguages);
+
+        initSpinner(languageSpinner, R.array.language_select);
+        handleButtonEvents();
 
         // layouts of all welcome sliders
         // add few more layouts if you want
@@ -118,7 +138,7 @@ public class SliderActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        settingsManager.setShowHelpSlider(false);
+        getSettingsManager().setShowHelpSlider(false);
         startActivity(new Intent(SliderActivity.this, MainActivity.class));
         finish();
     }
@@ -128,8 +148,12 @@ public class SliderActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
+            if (position == 0) {
+                llLanguges.setVisibility(View.VISIBLE);
+            } else {  //if
+                llLanguges.setVisibility(View.GONE);
+            }   //else
             addBottomDots(position);
-
             // changing the next button text 'NEXT' / 'GOT IT'
             if (position == layouts.length - 1) {
                 // last page. make button text to GOT IT
@@ -198,4 +222,58 @@ public class SliderActivity extends AppCompatActivity {
             return Html.fromHtml(source);
         }
     }
+
+    private Spinner initSpinner(Spinner spinner, int arrayResItems) {
+        if (spinner == null) {
+            return null;
+        }   //if
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                arrayResItems, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        String lang = getSettingsManager().getLang();
+        if (lang.equalsIgnoreCase(Consts.LANG_PL)) {
+            spinner.setSelection(1);
+        }   //if
+        return spinner;
+    }
+
+    private void handleButtonEvents() {
+        btnChangeLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    int langIndex = languageSpinner.getSelectedItemPosition();
+                    switch(langIndex) {
+                        case 0: //English
+                            getSettingsManager().setLang(Consts.LANG_EN);
+                            recreate();
+                            return;
+                        case 1: //Polish
+                            getSettingsManager().setLang(Consts.LANG_PL);
+                            recreate();
+                            return;
+                        case 2: //German
+                            getSettingsManager().setLang(Consts.LANG_DE);
+                            recreate();
+                            return;
+                        case 3: //German
+                            getSettingsManager().setLang(Consts.LANG_RU);
+                            recreate();
+                            return;
+                        default: //By default set to English
+                            getSettingsManager().setLang(Consts.LANG_EN);
+                            recreate();
+                            return;
+                    }
+                } catch (Exception ex) {
+                    //do nothing
+                }
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+                //nothing for now
+            }
+        });
+    }
+
 }

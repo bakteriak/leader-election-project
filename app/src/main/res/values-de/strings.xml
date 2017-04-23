@@ -1,0 +1,155 @@
+<resources>
+    <string name="app_name">Führerwahl-Spiel</string>
+
+    <!-- Main Activity String -->
+    <string name="reside_menu">Hauptmenü</string>
+    <string name="permission_message">Bitte alle Berechtigungen aktivieren</string>
+
+    <!-- Research Paper String -->
+    <string name="button_next_research_paper">Vorwärts</string>
+    <string name="button_previous_research_paper">Zurück</string>
+
+    <!-- Home Fragment String -->
+    <string name="text_swipe_right_left_to_open_menu">Nach rechts / links wischen, um das Menü zu öffnen</string>
+    <string name="leader_election_game">Führerwahl-Spiel</string>
+
+    <!-- Step By Step Fragment String -->
+    <string name="button_next_step_by_step">Vorwärts</string>
+    <string name="button_previous_step_by_step">Zurück</string>
+    <string name="button_reset_step_by_step">Zurücksetzen</string>
+    <string name="button_start_over_step_by_step">Neustart</string>
+
+    <string name="popup_node_winner">Gewinner: </string>
+    <string name="popup_node_referee">Schiedsrichter: </string>
+    <string name="popup_node_candidates_to_referee">Schiedsrichter ausgewählt von: </string>
+    <string name="popup_node_participant">Teilnehmer: </string>
+    <string name="popup_node_id">Knoten ID: </string>
+
+    <string name="title_activity_step_by_step">Schritt für Schritt Aktivität</string>
+
+    <string name="step_by_step_stage_one_caption">Schritt eins: Netzwerk erstellen</string>
+    <string name="step_by_step_stage_two_caption">Schritt zwei: Teilnehmer erstellen</string>
+    <string name="step_by_step_stage_three_caption">Schritt drei: Schiedsrichter</string>
+    <string name="step_by_step_stage_four_caption">Schritt vier: Wahl</string>
+
+    <string name="step_by_step_stage_one_explanation">Wir haben ein Netzwerk mit zehn Knoten erstellt. Jeder Knoten hat eine zufällige ID.</string>
+    <string name="step_by_step_stage_two_explanation">Alle grünen Knoten nehmen teil.</string>
+    <string name="step_by_step_stage_three_explanation">Als nächstes mußte jeder Teilnehmer einen Schiedsrichter wählen. Knoten mit blauem Rand sind Schiedsrichter.</string>
+    <string name="step_by_step_stage_four_explanation">Nun haben wir unseren Gewinner.</string>
+
+    <string name="step_by_step_stage_one_algorithm_info" formatted="false">Netzwerkgröße: %d. Jeder Knoten garantiert einen zufälligen Rang {1,...,pow(n,4)} = {1,...,%d}</string>
+    <string name="step_by_step_stage_two_algorithm_info" formatted="false">Jeder Knoten entscheidet sich, zu kandidieren mit einer Wahrscheinlichkeit von ((2 * log n)/n) = %4.2f.</string>
+    <string name="step_by_step_stage_three_algorithm_info" formatted="false">Jeder Teilnehmer wählt 2 * ceil(sqrt(n * log10(n))) = %d andere Knoten (die Schiedsrichter) und sendet eine Botschaft mit seinem Rang an den Schiedsrichter.</string>
+    <string name="step_by_step_stage_four_algorithm_info" formatted="false">Schiedsrichter haben den Knoten mit ID: %s zum Gewinner ernannt.</string>
+
+    <!-- About Fragment String -->
+    <string name="text_about">Das Hauptanliegen dieses Projektes ist es, das Problem mit dem Führerwahlalgorithmus mit Java auf Android darzustellen. Der genutzte Alogithmus für dieses Projekt ist eine zufällige, linear Führerwahl unter den Teilnehmern (Gruppe Knoten). \n\n
+	Die Führerwahl ist eines der fundamentalen Probleme verteilter Systeme. Ein Knoten im Netzwerk wird zum Führer gewählt, löst das Problem des Tages und teilt die Lösung den übrigen Knotenpunkten mit. Dieses Problem entstand das erste Mal in Le Lanns Token Ring (1977). \n\n
+	Der Führerwahlalgorithmus ist zu 99% korrekt, allerdings gibt es eine hohe Fehlerwahrscheinlichkeit in kleineren Netzwerken. \n\n
+	Alle Knoten beginnen als ungewählt. Ein Knoten muß sich entschließen, Führer zu sein. Ihm wird dann ein spezieller Status anerkannt und er erhält Zugang zu den Daten der n-Knoten. Die übrigen Knoten auf dem Netzwerk ändern ihren Status dann auf Nicht-Führer. Dazu müssen sie wissen, wer der Führer ist. \n\n
+	Falls ein Knoten aus dem Netzwerk ausscheidet entfernt der Algorithmus sie aus der Wahl.\n\n
+	Der Algorithmus kommuniziert synchron, jeder Knoten sendet eine Nachricht. Alle Knoten starten die Teilnahme gleichzeitig. Knoten können entweder Teilnehmer oder Kandidaten sein. \n\n
+	Jeder Knoten kann bis zu einer Nachricht mit seinem Nachbarn austauschen (senden / empfangen), jedoch nur in einer Runde. In der ersten Runde ist jeder Teilnehmer Kandidat. Der Schiedsrichter informiert den Gewinner. \n\n
+	Der Algorithmus nutzt ein Geburtstagsparadoxtypenargument um zu zeigen, daß ein einziger Knoten alle Wettbewerbe mit hoher Wahrscheinlichkeit gewinnt.</string>
+
+    <!-- Leader Game Fragment String -->
+    <string name="server_connection_error">Fehler - kein Kontakt zum Server.</string>
+    <string name="button_new_game">Neues Spiel</string>
+    <string name="button_game_in_progress">Lädt...</string>
+    <string name="network_connection_error">Keine Internetverbindung - Spiel wird nicht laden... Bitte verbinden und nochmal versuchen.</string>
+    <string name="network_connection_info">Das Spiel benötigt eine Internetverbindung. Netzwerk wird getested...</string>
+    <string name="network_connection_ok">Internet OK. Neues Spiel klicken, um teilzunehmen.</string>
+    <string name="game_server_connection_error" formatted="false">Server antwortet nicht... Bitte überprüfen: IP Addresse: %s, port: %d</string>
+
+    <!-- About Fragment String -->
+
+
+    <!-- Advanced Fragment String -->
+    <string name="advanced_caption">Messung der Effizienz des Führerwahlalgorithmuses. Bitte wählen Sie die Netzwerkgröße und die Anzahl der Algorithmen aus den folgenden Listen aus und tippen Sie auf die Schaltfläche "Ausführen", um die Ergebnisse zu sehen.</string>
+    <string name="network_size">Netzwerkgröße:</string>
+    <string name="algorithm_runs">Anzahl Durchläufe:</string>
+    <string name="advanced_select_network_size_prompt">Netzwergröße hier wählen</string>
+    <string name="advanced_select_runs_prompt">Durchlaufanzahl hier wählen</string>
+    <string-array name="advanced_network_size_arrays">
+        <item>10</item>
+        <item>100</item>
+        <item>1000</item>
+        <item>10000</item>
+        <item>100000</item>
+        <item>1000000</item>
+    </string-array>
+    <string-array name="advanced_algorithm_run_arrays">
+        <item>1</item>
+        <item>10</item>
+        <item>50</item>
+        <item>100</item>
+        <item>1000</item>
+    </string-array>
+    <string name="button_run_performance">Ausführen</string>
+    <string name="min_node_candidates_percentage">Min Kandidaten %:</string>
+    <string name="max_node_candidates_percentage">Max Kandidaten %:</string>
+    <string name="avg_node_candidates_percentage">Avg Kandidaten %:</string>
+    <string name="referees_number">Schiedsrichter Anzahl:</string>
+    <string name="winners_number">Gewinner Anzahl:</string>
+    <string name="total_algorithm_run_time">Gesamtzeit:</string>
+    <string name="min_algorithm_run_time">Min Zeit:</string>
+    <string name="max_algorithm_run_time">Max Zeit:</string>
+    <string name="avg_algorithm_run_time">Avg Zeit:</string>
+    <string name="improper_algorithm_params">Die Eingabeparameter des Algorithmus scheinen nicht richtig zu sein. Bitte wählen Sie die richtigen Werte aus den Listen.</string>
+    <string name="performance_test_in_progress">Leistungstest im Gange. Bitte warten Sie einen Moment, um die Ergebnisse zu sehen.</string>
+    <string name="performance_test_error">Leistungstestfehler. Bitte erneut versuchen.</string>
+    <string name="performance_progress_info_init_nodes" formatted="false">Durchlauf %d von %d: Netzwerk lädt...</string>
+    <string name="performance_progress_info_get_participants" formatted="false">Durchlauf %d von %d: Lädt Teilnehmer...</string>
+    <string name="performance_progress_info_get_referees" formatted="false">Durchlauf %d von %d: Lädt Schiedsrichter...</string>
+    <string name="performance_progress_info_nominating_winners" formatted="false">Durchlauf %d von %d: Lädt Gewinner...</string>
+
+
+    <!-- Slider String -->
+    <string name="next">VORWÄRTS</string>
+    <string name="skip">ÜBERSPRINGEN</string>
+    <string name="start">OK</string>
+    <string name="slider_subtitle">Anleitung</string>
+
+    <string name="slide_1_title">Start</string>
+    <string name="slide_1_desc">Nach rechts / links wischen, um das Menü zu öffnen</string>
+
+    <string name="slide_2_title">Bericht</string>
+    <string name="slide_2_desc">Lesen Sie mehr über den randomisierten sublinearen Führerwahlalgorithmus!</string>
+
+    <string name="slide_3_title">Mehr</string>
+    <string name="slide_3_desc">Mehr über das Projekt erfahren!</string>
+
+    <string name="slide_4_title">Führerspiele</string>
+    <string name="slide_4_desc">Mit mehreren Teilnehmern spielen!</string>
+
+    <string name="slide_5_title">Schritt für Schritt</string>
+    <string name="slide_5_desc">Jeden Schritt detailiert verfolgen!</string>
+
+    <string name="slide_6_title">Fortgeschritten</string>
+    <string name="slide_6_desc">Algorithmusleistung messen!</string>
+
+    <!-- Custom -->
+    <string name="algorithm_error_too_many_participants">Zu viele Teilnehmer (oder Maximum zu tief).</string>
+    <string name="algorithm_error_referee_cannot_nominate_winner">Einziger Schiedsrichter kann keinen Gewinner feststellen...</string>
+    <string name="algorithm_error_referees_cannot_nominate_winner">Kein Schiedsrichter konnte einen Gewinner feststellen...</string>
+    <string name="language_setting">Sprache:</string>
+    <string name="advanced_language_setting">Sprache wählen</string>
+    <string name="btn_change_language">Ändern</string>
+
+    <string-array name="language_select">
+        <item>Englisch</item>
+        <item>Plonisch</item>
+		<item>Deutsch</item>
+		<item>Russisch</item>
+    </string-array>
+
+    <string name="menu_home">Start</string>
+    <string name="menu_research_paper">Bericht</string>
+    <string name="menu_about">Mehr</string>
+    <string name="menu_leader_game">Führerspiele</string>
+    <string name="menu_step_by_step">Schritt für Schritt</string>
+    <string name="menu_advanced">Fortgeschritten</string>
+    <string name="menu_help">Hilfe</string>
+
+
+</resources>

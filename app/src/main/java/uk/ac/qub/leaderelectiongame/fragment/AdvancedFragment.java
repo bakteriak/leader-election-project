@@ -203,42 +203,43 @@ public class AdvancedFragment extends Fragment {
     private void runPerformance() {
         clearPerformanceResults();
         PerformanceInput input = new PerformanceInput(networkSize, algorithmRuns);
-        new PerformanceAsyncTask()
-        {
-            @Override
-            public void onPostExecute(PerformanceOutput result) {
-                if (wakeLock != null) {
-                    wakeLock.release();
-                }   //if
-                hideDialog();
-                if (result == null) {
-                    Toast.makeText(getActivity(),
-                            getString(R.string.performance_test_error), Toast.LENGTH_LONG)
-                            .show();
-                    return;
-                }   //if
-                showPerformanceResults(result);
-            }
+        if (getActivity() != null) {
+            new PerformanceAsyncTask(getActivity()) {
+                @Override
+                public void onPostExecute(PerformanceOutput result) {
+                    if (wakeLock != null) {
+                        wakeLock.release();
+                    }   //if
+                    hideDialog();
+                    if (result == null) {
+                        Toast.makeText(getActivity(),
+                                getString(R.string.performance_test_error), Toast.LENGTH_LONG)
+                                .show();
+                        return;
+                    }   //if
+                    showPerformanceResults(result);
+                }
 
-            @Override
-            protected void onPreExecute() {
-                if (wakeLock != null) {
-                    wakeLock.acquire();
-                }   //if
-                showOrUpdateDialog(getString(R.string.performance_test_in_progress));
-            }
+                @Override
+                protected void onPreExecute() {
+                    if (wakeLock != null) {
+                        wakeLock.acquire();
+                    }   //if
+                    showOrUpdateDialog(getString(R.string.performance_test_in_progress));
+                }
 
-            @Override
-            protected void onProgressUpdate(String... values) {
-                if (values == null) {
-                    return;
-                }   //if
-                if (values.length == 0) {
-                    return;
-                }   //if
-                showOrUpdateDialog(values[0]);
-            }
-        }.execute(input);
+                @Override
+                protected void onProgressUpdate(String... values) {
+                    if (values == null) {
+                        return;
+                    }   //if
+                    if (values.length == 0) {
+                        return;
+                    }   //if
+                    showOrUpdateDialog(values[0]);
+                }
+            }.execute(input);
+        }   //if
     }
 
     private void showOrUpdateDialog(String message) {
