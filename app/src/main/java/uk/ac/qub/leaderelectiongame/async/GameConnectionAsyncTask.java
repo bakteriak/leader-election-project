@@ -17,22 +17,46 @@ import uk.ac.qub.leaderelectiongame.R;
 import uk.ac.qub.leaderelectiongame.consts.Consts;
 import uk.ac.qub.leaderelectiongame.game.CipherSocket;
 
+/**
+ * Class responsible for communicating with game server, extends AsyncTask.
+ */
 public class GameConnectionAsyncTask extends AsyncTask<Void, String, Void> {
 
+    /**
+     * Listening server IP.
+     */
     private static final String SERVER_IP = "54.245.51.53";
     //private static final String SERVER_IP = "10.0.2.2";
+
+    /**
+     * Listening server port.
+     */
     private static final int SERVER_PORT = 2222;
+
+    /**
+     * Server connection timeout.
+     */
     private static final int TIMEOUT_MS = 3000;
 
     private static final String TAG = "GameConnectionAsyncTask";
 
+    /**
+     * Context.
+     */
     private Context context;
 
+    /**
+     * Constructor.
+     * @param context
+     */
     public GameConnectionAsyncTask(Context context){
         this.context = context;
     }
 
     @Override
+    /**
+     * Method to perform a game server communication on a background thread.
+     */
     protected Void doInBackground(Void... voids) {
         try {
             InetAddress serverAddr = InetAddress.getByName(SERVER_IP);

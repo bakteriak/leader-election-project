@@ -12,15 +12,28 @@ import uk.ac.qub.leaderelectiongame.model.Node;
 import uk.ac.qub.leaderelectiongame.model.PerformanceInput;
 import uk.ac.qub.leaderelectiongame.model.PerformanceOutput;
 
+/**
+ * Class responsible for performing advanced algorithm analysis (performance check), extends AsyncTask.
+ */
 public class PerformanceAsyncTask extends AsyncTask<PerformanceInput, String, PerformanceOutput> {
 
+    /**
+     * Context.
+     */
     private Context context;
 
+    /**
+     * Constructor.
+     * @param context
+     */
     public PerformanceAsyncTask(Context context){
         this.context = context;
     }
 
     @Override
+    /**
+     * Method to perform a multiple algorithm runs on a background thread.
+     */
     protected PerformanceOutput doInBackground(PerformanceInput... performanceInputs) {
         try {
             if (performanceInputs == null) {

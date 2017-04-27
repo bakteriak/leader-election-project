@@ -6,8 +6,16 @@ import java.util.List;
 
 import uk.ac.qub.leaderelectiongame.consts.Consts;
 
+/**
+ * Class responsible for grouping math functions used in application.
+ */
 class MathHelper {
 
+    /**
+     * Method selecting min value from integers list.
+     * @param values
+     * @return
+     */
     public static int selectMinValue(List<Integer> values) {
         if (values == null) {
             return Consts.ALGRITHM_PERFORMANCE_ERROR_CODE;
@@ -22,6 +30,11 @@ class MathHelper {
         }   //catch
     }
 
+    /**
+     * Method selecting min value from longs list.
+     * @param values
+     * @return
+     */
     public static long selectLongMinValue(List<Long> values) {
         if (values == null) {
             return Consts.ALGRITHM_PERFORMANCE_ERROR_CODE;
@@ -36,6 +49,11 @@ class MathHelper {
         }   //catch
     }
 
+    /**
+     * Method selecting max value from integers list.
+     * @param values
+     * @return
+     */
     public static int selectMaxValue(List<Integer> values) {
         if (values == null) {
             return Consts.ALGRITHM_PERFORMANCE_ERROR_CODE;
@@ -50,6 +68,11 @@ class MathHelper {
         }   //catch
     }
 
+    /**
+     * Method selecting max value from longs list.
+     * @param values
+     * @return
+     */
     public static long selectLongMaxValue(List<Long> values) {
         if (values == null) {
             return Consts.ALGRITHM_PERFORMANCE_ERROR_CODE;
@@ -64,6 +87,12 @@ class MathHelper {
         }   //catch
     }
 
+    /**
+     * Method to calculate percent one number of other number.
+     * @param number
+     * @param total
+     * @return
+     */
     public static BigDecimal calculatePercent(BigDecimal number, BigDecimal total) {
         if ((number == null) || (total == null)) {
             return new BigDecimal(Consts.ALGRITHM_PERFORMANCE_ERROR_CODE);
@@ -75,6 +104,11 @@ class MathHelper {
         }   //catch
     }
 
+    /**
+     * Method to calculate average value of longs list.
+     * @param values
+     * @return
+     */
     public static BigDecimal calculateLongAvg(List<Long> values) {
         if (values == null) {
             return new BigDecimal(Consts.ALGRITHM_PERFORMANCE_ERROR_CODE);
@@ -93,6 +127,12 @@ class MathHelper {
         }   //catch
     }
 
+    /**
+     * Method to calculate average percent of integers list.
+     * @param values
+     * @param total
+     * @return
+     */
     public static BigDecimal calculateAvgPercent(List<Integer> values, BigDecimal total) {
         if (values == null) {
             return new BigDecimal(Consts.ALGRITHM_PERFORMANCE_ERROR_CODE);

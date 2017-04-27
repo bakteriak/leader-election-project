@@ -4,21 +4,6 @@
     <string name="advanced_caption">W poniższej sekcji próbujemy zmierzyć wydajność algorytmu losowego wyboru lidera. Proszę wybrać rozmiar sieci oraz liczbę iteracji algorytmu i kliknąć \'Start\'.</string>
     <string name="advanced_select_network_size_prompt">Wybierz rozmiar sieci</string>
     <string name="advanced_select_runs_prompt">Wybierz liczbę iteracji.</string>
-    <string-array name="advanced_network_size_arrays">
-        <item>10</item>
-        <item>100</item>
-        <item>1000</item>
-        <item>10000</item>
-        <item>100000</item>
-        <item>1000000</item>
-    </string-array>
-    <string-array name="advanced_algorithm_run_arrays">
-        <item>1</item>
-        <item>10</item>
-        <item>50</item>
-        <item>100</item>
-        <item>1000</item>
-    </string-array>
     <string name="algorithm_error_referee_cannot_nominate_winner">Sędziemu nie udało się nominowac zwycięzcy...</string>
     <string name="algorithm_error_referees_cannot_nominate_winner">Sędziom nie udało się nominowac zwycięzcy...</string>
     <string name="algorithm_error_too_many_participants">Zbyt wielu uczestników (albo zbyt niskie max id).</string>

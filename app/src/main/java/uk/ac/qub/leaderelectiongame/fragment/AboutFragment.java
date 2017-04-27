@@ -11,15 +11,20 @@ import android.widget.TextView;
 import uk.ac.qub.leaderelectiongame.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment responsible for displaying about app info.
  */
 public class AboutFragment extends Fragment {
 
+    /**
+     * Required empty public constructor.
+     */
     public AboutFragment() {
-        // Required empty public constructor
     }
 
     @Override
+    /**
+     * Method to create and return the view hierarchy associated with the fragment.
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment

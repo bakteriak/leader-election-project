@@ -20,23 +20,44 @@ import uk.ac.qub.leaderelectiongame.game.GameAdapter;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment responsible for leader election game.
  */
 public class LeaderGameFragment extends Fragment {
 
-    //layout elements
+    /**
+     * Game messages list view.
+     */
     private ListView lvGameList;
+
+    /**
+     * New game button.
+     */
     private Button btnNewGame;
 
+    /**
+     * Game messages array.
+     */
     private ArrayList<String> messages;
+
+    /**
+     * Game messages list view adapter.
+     */
     private GameAdapter gameAdapter;
 
+    /**
+     * Game async task.
+     */
     private AsyncTask<Void, String, Void> gameConnectionAsyncTask;
 
+    /**
+     * Required empty public constructor.
+     */
     public LeaderGameFragment() {
-        // Required empty public constructor
     }
 
+    /**
+     * Method to create and return the view hierarchy associated with the fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,6 +75,9 @@ public class LeaderGameFragment extends Fragment {
         return v;
     }
 
+    /**
+     * Method to handle new game button.
+     */
     private void handleButtonsEvents() {
         btnNewGame.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -62,6 +86,9 @@ public class LeaderGameFragment extends Fragment {
         });
     }
 
+    /**
+     * Method to handle game server communication.
+     */
     private void connect() {
         stopConnectionTask();
         if (getActivity() != null) {
@@ -93,18 +120,27 @@ public class LeaderGameFragment extends Fragment {
         }   //if
     }
 
+    /**
+     * Method called on activity stop.
+     */
     @Override
     public void onStop() {
         super.onStop();
         stopConnectionTask();
     }
 
+    /**
+     * Method to stop game connection task.
+     */
     private void stopConnectionTask() {
         if ((gameConnectionAsyncTask != null) && (gameConnectionAsyncTask.getStatus() == AsyncTask.Status.RUNNING)) {
             gameConnectionAsyncTask.cancel(true);
         }   //if
     }
 
+    /**
+     * Method to check device network state.
+     */
     private void initApp() {
         new NetworkCheckAsyncTask()
         {
@@ -126,21 +162,33 @@ public class LeaderGameFragment extends Fragment {
         }.execute();
     }
 
+    /**
+     * Method adding network error info to messages.
+     */
     private void communicateNetworkError() {
         messages.add(getString(R.string.network_connection_error));
         gameAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Method adding network info to messages.
+     */
     private void communicateNetworkInfo() {
         messages.add(getString(R.string.network_connection_info));
         gameAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Method adding network ok info to messages.
+     */
     private void communicateNetworkOk() {
         messages.add(getString(R.string.network_connection_ok));
         gameAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Method to disable new game button while game in progress.
+     */
     private void disableButton() {
         btnNewGame.setEnabled(false);
         btnNewGame.setClickable(false);
@@ -148,6 +196,9 @@ public class LeaderGameFragment extends Fragment {
         btnNewGame.setText(getString(R.string.button_game_in_progress));
     }
 
+    /**
+     * Method to enable new game button.
+     */
     private void enableButton() {
         btnNewGame.setEnabled(true);
         btnNewGame.setClickable(true);

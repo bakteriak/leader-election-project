@@ -20,13 +20,30 @@ import javax.crypto.spec.SecretKeySpec;
 
 import uk.ac.qub.leaderelectiongame.consts.Consts;
 
+/**
+ * Class responsible for creating socket encrypting client - server communication. Extends socket.
+ */
 public class CipherSocket extends Socket {
 
     private static final String TAG = "CipherSocket";
 
+    /**
+     * Cipher algorithm name.
+     */
     private String algorithm;
+
+    /**
+     * Cipher algorithm key.
+     */
     private String key;
 
+    /**
+     * Constructor.
+     * @param host
+     * @param port
+     * @param key
+     * @throws IOException
+     */
     public CipherSocket(String host, int port, String key)
             throws IOException {
         super(host, port);
@@ -34,12 +51,22 @@ public class CipherSocket extends Socket {
         this.key = key;
     }
 
+    /**
+     * Constructor.
+     * @param key
+     * @throws IOException
+     */
     public CipherSocket(String key)
             throws IOException {
         this.algorithm = Consts.CIPHER_ALGORITHM;
         this.key = key;
     }
 
+    /**
+     * Socket input stream getter.
+     * @return socket input stream
+     * @throws IOException
+     */
     public InputStream getInputStream() throws IOException {
         InputStream is = super.getInputStream();
         Cipher cipher;
@@ -60,6 +87,11 @@ public class CipherSocket extends Socket {
         return cis;
     }
 
+    /**
+     * Socket output stream getter.
+     * @return socket output stream
+     * @throws IOException
+     */
     public OutputStream getOutputStream() throws IOException {
         OutputStream os = super.getOutputStream();
         Cipher cipher;
@@ -80,6 +112,13 @@ public class CipherSocket extends Socket {
         return cos;
     }
 
+    /**
+     * Method to generate AES cipher key from text.
+     * @param plainKey
+     * @return
+     * @throws UnsupportedEncodingException
+     * @throws NoSuchAlgorithmException
+     */
     private byte[] generateAESKey(String plainKey) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         if (TextUtils.isEmpty(plainKey)) {
             return new byte[] {};

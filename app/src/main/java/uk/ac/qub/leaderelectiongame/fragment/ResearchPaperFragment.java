@@ -13,14 +13,19 @@ import uk.ac.qub.leaderelectiongame.activity.MainActivity;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment responsible for displaying research paper.
  */
 public class ResearchPaperFragment extends Fragment {
 
+    /**
+     * Required empty public constructor.
+     */
     public ResearchPaperFragment() {
-        // Required empty public constructor
     }
 
+    /**
+     * Method to create and return the view hierarchy associated with the fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,11 +38,14 @@ public class ResearchPaperFragment extends Fragment {
         return v;
     }
 
+    /**
+     * Method to load research paper PDF.
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        // Loading PDF
         PDFView pdfView = (PDFView) view.findViewById(R.id.pdfView);
         pdfView.fromAsset("research_paper.pdf")
                 .pages(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)

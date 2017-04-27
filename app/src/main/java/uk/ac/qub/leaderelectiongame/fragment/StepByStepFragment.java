@@ -30,37 +30,96 @@ import uk.ac.qub.leaderelectiongame.model.Node;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment responsible for performing step by step algorithm presentation.
  */
 public class StepByStepFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "StepByStepFragment";
 
+    /**
+     * Node info popup window.
+     */
     private PopupWindow popupWindow;
-    //layout elements
+
+    /**
+     * Algoritm nodes.
+     */
     private HashMap<Node, TextView> nodes;
+
+    /**
+     * Step by step caption text.
+     */
     private TextView txtStepByStepCaption;
+
+    /**
+     * Step by step info text.
+     */
     private TextView txtStepByStepInfo;
+
+    /**
+     * Step by step algorithm info text.
+     */
     private TextView txtStepByStepAlgorithmInfo;
+
+    /**
+     * Button back.
+     */
     private Button btnPrev;
+
+    /**
+     * Button next.
+     */
     private Button btnNext;
+
+    /**
+     * Relative layout containing network nodes.
+     */
     private RelativeLayout rlNetwork;
 
-    //popup
+    /**
+     * Node id text in popup.
+     */
     private TextView txtPopupNodeId;
+
+    /**
+     * Node is participant text in popup.
+     */
     private TextView txtPopupNodeParticipant;
+
+    /**
+     * Node referee is selected by text in popup.
+     */
     private TextView txtPopupNodeCandidatesToReferee;
+
+    /**
+     * Node is referee text in popup.
+     */
     private TextView txtPopupNodeReferee;
+
+    /**
+     * Node is winner text in popup.
+     */
     private TextView txtPopupNodeWinner;
 
-
+    /**
+     * Current step by step stage.
+     */
     private StepByStepStage currentStep;
+
+    /**
+     * Max step by step stage achieved by user.
+     */
     private int stepAchieved;
 
-    // Required empty public constructor
+    /**
+     * Required empty public constructor.
+     */
     public StepByStepFragment() {
     }
 
+    /**
+     * Method to create and return the view hierarchy associated with the fragment.
+     */
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,7 +144,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         return v;
     }
 
-    ///initializng network from algorithm and display first step
+    /**
+     * Method to initialize network from algorithm and display first step.
+     * @return
+     */
     private boolean initNodes() {
         try {
             List<Node> nodesFromAlgorithm = LeaderElectionAlgorithm.initNodes(Consts.PARTICIPANTS_NUMBER, getActivity());
@@ -113,7 +175,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }   //if
     }
 
-    ///only display change
+    /**
+     * Method to display first step from saved network state.
+     * @return
+     */
     private boolean showNodesFirstStep() {
         try {
             if (this.nodes == null) {
@@ -136,7 +201,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }   //if
     }
 
-    ///initializng participants from algorithm and display second step
+    /**
+     * Method to initialize participants from algorithm and display second step.
+     * @return
+     */
     private boolean initParticipants() {
         try {
             if (this.nodes == null) {
@@ -161,7 +229,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }   //if
     }
 
-    ///only display change
+    /**
+     * Method to display second step from saved network state.
+     * @return
+     */
     private boolean showNodesSecondStep() {
         try {
             if (this.nodes == null) {
@@ -189,7 +260,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }   //if
     }
 
-    ///initializng referees from algorithm and display third step
+    /**
+     * Method to initialize referees from algorithm and display third step.
+     * @return
+     */
     private boolean initReferees() {
         try {
             if (this.nodes == null) {
@@ -217,7 +291,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }   //if
     }
 
-    ///only display change
+    /**
+     * Method to display third step from saved network state.
+     * @return
+     */
     private boolean showNodesThirdStep() {
         try {
             if (this.nodes == null) {
@@ -253,7 +330,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }   //if
     }
 
-    ///initializng winner from algorithm and display fourth step
+    /**
+     * Method to initialize winner from algorithm and display fourth step.
+     * @return
+     */
     private boolean initWinners() {
         try {
             if (this.nodes == null) {
@@ -277,7 +357,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }   //if
     }
 
-    ///only display change
+    /**
+     * Method to display fourth step from saved network state.
+     * @return
+     */
     private boolean showNodesFourthStep() {
         try {
             if (this.nodes == null) {
@@ -322,6 +405,9 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
 
     }
 
+    /**
+     * Method to handle next step button click.
+     */
     private void handleBtnNextClick() {
         btnNext.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -330,6 +416,9 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         });
     }
 
+    /**
+     * Method to handle previous step button click.
+     */
     private void handleBtnPrevClick() {
         btnPrev.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -338,6 +427,9 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         });
     }
 
+    /**
+     * Method to change step (forward or backward).
+     */
     private void changeStep(StepByStepStage newStep) {
         btnPrev.setText(getString(R.string.button_previous_step_by_step));
         btnNext.setText(getString(R.string.button_next_step_by_step));
@@ -405,12 +497,20 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    ///decide whether nodes need to be initialized from algorithm or from memory
+    /**
+     * Method to decide whether nodes need to be initialized from algorithm or from saved network state.
+     * @param newStep
+     * @return
+     */
     private boolean nodesFromAlgorithm(StepByStepStage newStep) {
         return (this.stepAchieved < newStep.getNumber());
     }
 
-    ///algorithm reset (first step)
+    /**
+     * Method to determine if algorithm reset needed.
+     * @param newStep
+     * @return
+     */
     private boolean resetAlgorithm(StepByStepStage newStep) {
         if (this.currentStep.getNumber() == 1) {
             return (newStep.getNumber() == this.currentStep.getNumber());
@@ -418,7 +518,11 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         return false;
     }
 
-    ///algorithm start over
+    /**
+     * Method to determine if algorithm start over needed.
+     * @param newStep
+     * @return
+     */
     private boolean startOverAlgorithm(StepByStepStage newStep) {
         if (this.currentStep.getNumber() == 4) {
             return (newStep.getNumber() == this.currentStep.getNumber());
@@ -426,7 +530,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         return false;
     }
 
-    ///node popup handling
+    /**
+     * Method to show popup window on node click.
+     * @param textView
+     */
     private void handleNodeClick(final TextView textView) {
         if (textView == null) {
             return;
@@ -451,6 +558,11 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         });
     }
 
+    /**
+     * Method to find node by id.
+     * @param nodeId
+     * @return
+     */
     private Node findNodeById(int nodeId) {
         if (this.nodes == null) {
             return null;
@@ -463,6 +575,9 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         return null;
     }
 
+    /**
+     * Method to handle nodes click.
+     */
     private void handleNodesClick() {
         for (int i = 0; i < rlNetwork.getChildCount(); i++) {
             View v = rlNetwork.getChildAt(i);
@@ -472,6 +587,11 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }   //for
     }
 
+    /**
+     * Method to fill popup window with node data.
+     * @param node
+     * @param popupView
+     */
     private void fillPopupData(Node node, View popupView) {
         if (popupView == null) {
             return;
@@ -492,6 +612,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         }   //else
     }
 
+    /**
+     * Method to clear popup window node data.
+     * @param popupView
+     */
     private void clearPopupData(View popupView) {
         if (popupView == null) {
             return;
@@ -504,6 +628,10 @@ public class StepByStepFragment extends Fragment implements View.OnClickListener
         txtPopupNodeWinner.setText(Consts.BLANK_STRING_VALUE);
     }
 
+    /**
+     * Method to init popup window elements.
+     * @param popupView
+     */
     private void initPopupElements(View popupView) {
         if (popupView == null) {
             return;

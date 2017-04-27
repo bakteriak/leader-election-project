@@ -9,9 +9,15 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Class responsible for checking if device has network access, extends AsyncTask.
+ */
 public class NetworkCheckAsyncTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
+    /**
+     * Method to perform a network check on a background thread.
+     */
     protected Boolean doInBackground(Void... voids) {
         InetAddress inetAddress = null;
         try {

@@ -3,6 +3,9 @@ package uk.ac.qub.leaderelectiongame.enums;
 
 import uk.ac.qub.leaderelectiongame.R;
 
+/**
+ * Step by step stages enum.
+ */
 public enum StepByStepStage {
 
     FIRST(1,
@@ -18,8 +21,19 @@ public enum StepByStepStage {
             R.string.step_by_step_stage_four_caption,
             R.string.step_by_step_stage_four_explanation);
 
+    /**
+     * Caption string res id.
+     */
     private int captionId;
+
+    /**
+     * Info string res id.
+     */
     private int infoId;
+
+    /**
+     * Number of step.
+     */
     private final int number;
 
     StepByStepStage(int number, int captionId, int infoId) {
@@ -28,18 +42,31 @@ public enum StepByStepStage {
         this.infoId = infoId;
     }
 
+
+    /**
+     * Caption string res id getter.
+     */
     public int getCaptionId() {
         return captionId;
     }
 
+    /**
+     * Info string res id getter.
+     */
     public int getInfoId() {
         return infoId;
     }
 
+    /**
+     * Step number getter.
+     */
     public int getNumber() {
         return number;
     }
 
+    /**
+     * Method to calculate next step.
+     */
     public StepByStepStage getNextStage() {
         switch (this) {
             case FIRST:
@@ -54,6 +81,9 @@ public enum StepByStepStage {
         return FIRST;
     }
 
+    /**
+     * Method to calculate previous step.
+     */
     public StepByStepStage getPrevStage() {
         switch (this) {
             case FIRST:

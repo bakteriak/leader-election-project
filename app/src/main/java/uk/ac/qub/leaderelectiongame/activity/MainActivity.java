@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -20,17 +19,55 @@ import uk.ac.qub.leaderelectiongame.fragment.ResearchPaperFragment;
 import uk.ac.qub.leaderelectiongame.fragment.StepByStepFragment;
 import uk.ac.qub.leaderelectiongame.helpers.SettingsManager;
 
+/**
+ * Main activity, contains all actions in app, except home slider. Extends <code>BaseActivity</code>.
+ */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
+    /**
+     * Reside menu object.
+     */
     private ResideMenu resideMenu;
+
+    /**
+     * Reside menu home item.
+     */
     private ResideMenuItem itemHome;
+
+    /**
+     * Reside menu research paper item.
+     */
     private ResideMenuItem itemResearchPaper;
+
+    /**
+     * Reside menu step by step item.
+     */
     private ResideMenuItem itemStepByStep;
+
+    /**
+     * Reside menu leader game item.
+     */
     private ResideMenuItem itemLeaderGame;
+
+    /**
+     * Reside menu about item.
+     */
     private ResideMenuItem itemAbout;
+
+    /**
+     * Reside menu performance item.
+     */
     private ResideMenuItem itemAdvanced;
+
+    /**
+     * Reside menu help slider item.
+     */
     private ResideMenuItem itemHelp;
 
+    /**
+     * Method being called to do initial creation of a activity
+     * @param savedInstanceState - activity state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +78,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
+    /**
+     * Method to set up menu and link menu items.
+     */
     private void setUpMenu() {
         //attach menu to current activity
         resideMenu = new ResideMenu(this);
@@ -55,7 +95,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         itemLeaderGame = new ResideMenuItem(this,R.drawable.icon_leader_game, getString(R.string.menu_leader_game));
         itemStepByStep = new ResideMenuItem(this,R.drawable.icon_step_by_step, getString(R.string.menu_step_by_step));
         itemAdvanced = new ResideMenuItem(this, R.drawable.icon_advanced, getString(R.string.menu_advanced));
-        itemHelp = new ResideMenuItem(this, R.drawable.icon_question_mark, getString(R.string.menu_help));
+        itemHelp = new ResideMenuItem(this, R.drawable.icon_help, getString(R.string.menu_help));
 
         itemHome.setOnClickListener(this);
         itemResearchPaper.setOnClickListener(this);
@@ -69,9 +109,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         resideMenu.addMenuItem(itemResearchPaper,ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemAbout, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemHelp, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemLeaderGame, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemStepByStep, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemAdvanced, ResideMenu.DIRECTION_RIGHT);
-        resideMenu.addMenuItem(itemLeaderGame, ResideMenu.DIRECTION_RIGHT);
 
         findViewById(R.id.title_bar_left_menu).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,14 +127,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         });
     }
 
+    /**
+     * Method to handle touch events in activity.
+     * @param ev
+     * @return true if event consumed
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return resideMenu.dispatchTouchEvent(ev);
     }
 
+    /**
+     * Method to handle menu items click, mostly by changing fragment, also to show help slider.
+     * @param v
+     */
     @Override
     public void onClick(View v) {
-
         if (v == itemHome) {
             changeFragment(new HomeFragment());
         } else if(v == itemResearchPaper) {
@@ -116,6 +164,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         resideMenu.closeMenu();
     }
 
+    /**
+     * Method to change current fragment.
+     * @param targetFragment - fragment to transit to
+     */
     private void changeFragment(Fragment targetFragment) {
         resideMenu.clearIgnoredViewList();
         getSupportFragmentManager()
@@ -125,6 +177,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 .commit();
     }
 
+    /**
+     * Method to redirecting to new activity.
+     * @param clazz - class of activity to redirect to
+     */
     private void redirectToActivity(Class clazz) {
         if (this.getClass() != clazz) {
             Intent intent = new Intent(this, clazz);
@@ -133,7 +189,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }   //if
     }
 
-    public ResideMenu getResideMenu(){
+    /**
+     * Reside menu getter.
+     * @return menu object
+     */
+ public ResideMenu getResideMenu(){
         return resideMenu;
     }
 }

@@ -13,22 +13,25 @@ import uk.ac.qub.leaderelectiongame.R;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment responsible for displaying home screen.
  */
 public class HomeFragment extends Fragment {
 
-    private View v;
-
+    /**
+     * Required empty public constructor.
+     */
     public HomeFragment() {
-        // Required empty public constructor
     }
 
 
+    /**
+     * Method to create and return the view hierarchy associated with the fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView about_TextView = (TextView) v.findViewById(R.id.textProjectName);
         about_TextView.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "copperplate_t_light.ttf"));
         return v;

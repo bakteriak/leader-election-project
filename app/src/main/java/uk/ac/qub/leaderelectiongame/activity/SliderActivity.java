@@ -31,19 +31,55 @@ import uk.ac.qub.leaderelectiongame.R;
 import uk.ac.qub.leaderelectiongame.consts.Consts;
 import uk.ac.qub.leaderelectiongame.helpers.SettingsManager;
 
-
+/**
+ * Activity responsible for displaying help slider.
+ */
 public class SliderActivity extends BaseActivity {
 
+    /**
+     * View pager.
+     */
     private ViewPager viewPager;
+
+    /**
+     * Adapter for view pager.
+     */
     private MyViewPagerAdapter myViewPagerAdapter;
+
+    /**
+     * Linear layout, in which slider dots are being displayed.
+     */
     private LinearLayout dotsLayout;
+
+    /**
+     * Slider dots array.
+     */
     private TextView[] dots;
+
+    /**
+     * Slider pages array.
+     */
     private int[] layouts;
+
+    /**
+     * Buttons.
+     */
     private Button btnSkip, btnNext, btnChangeLanguage;
 
+    /**
+     * Spinner to select language.
+     */
     private Spinner languageSpinner;
+
+    /**
+     * Layout containing language spinner
+     */
     private LinearLayout llLanguges;
 
+    /**
+     * Method being called to do initial creation of a activity
+     * @param savedInstanceState - activity state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +150,10 @@ public class SliderActivity extends BaseActivity {
         });
     }
 
+    /**
+     * Method to add slider dots.
+     * @param currentPage
+     */
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];
 
@@ -133,17 +173,27 @@ public class SliderActivity extends BaseActivity {
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 
+    /**
+     * Method to get page with index i.
+     * @param i
+     * @return
+     */
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
     }
 
+    /**
+     * Method to redirect to main activity from slider activity.
+     */
     private void launchHomeScreen() {
         getSettingsManager().setShowHelpSlider(false);
         startActivity(new Intent(SliderActivity.this, MainActivity.class));
         finish();
     }
 
-    //  viewpager change listener
+    /**
+     * View pager listener.
+     */
     private final ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
@@ -214,7 +264,11 @@ public class SliderActivity extends BaseActivity {
         }
     }
 
-    @SuppressWarnings("deprecation")
+    /**
+     * Method to generate html from text, part of used for backward compatibility.
+     * @param source
+     * @return html from text
+     */
     public static Spanned fromHtml(String source) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY);
@@ -223,6 +277,12 @@ public class SliderActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Method to init spinner with values from string array.
+     * @param spinner
+     * @param arrayResItems
+     * @return inited spinner
+     */
     private Spinner initSpinner(Spinner spinner, int arrayResItems) {
         if (spinner == null) {
             return null;
@@ -238,6 +298,9 @@ public class SliderActivity extends BaseActivity {
         return spinner;
     }
 
+    /**
+     * Method to handle change language button.
+     */
     private void handleButtonEvents() {
         btnChangeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -257,7 +320,7 @@ public class SliderActivity extends BaseActivity {
                             getSettingsManager().setLang(Consts.LANG_DE);
                             recreate();
                             return;
-                        case 3: //German
+                        case 3: //Russian
                             getSettingsManager().setLang(Consts.LANG_RU);
                             recreate();
                             return;

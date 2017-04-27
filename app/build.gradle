@@ -1,14 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'LeaderElectionKey'
-            keyPassword '0nceUponthet!me5'
-            storeFile file('C:/Users/kjked/OneDrive/Private/LeaderElection APK Key/Android.jks')
-            storePassword '0nceUponthet!me'
-        }
-    }
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
     defaultConfig {
@@ -24,18 +16,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug {
-            signingConfig signingConfigs.config
-        }
-    }
-    productFlavors {
-        free {
-        }
     }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

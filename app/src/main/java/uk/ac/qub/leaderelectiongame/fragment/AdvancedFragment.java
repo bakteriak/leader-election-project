@@ -28,43 +28,120 @@ import uk.ac.qub.leaderelectiongame.model.PerformanceOutput;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment responsible for performing performance check.
  */
 public class AdvancedFragment extends Fragment {
 
-    //layout elements
+    /**
+     * Spinner to set network size.
+     */
     private Spinner spinnerNetworkSize;
+
+    /**
+     * Spinner to set number of algorithm runs.
+     */
     private Spinner spinnerAlgorithmRuns;
+
+    /**
+     * Scroll view with performance results.
+     */
     private ScrollView svResults;
+
+    /**
+     * Results line.
+     */
     private View resultsLine;
+
+    /**
+     * Button to run performance.
+     */
     private Button btnRunPerformance;
+
+    /**
+     * Text view to display min cadidates percentage.
+     */
     private TextView txtMinNodeCandidatesPercentage;
+
+    /**
+     * Text view to display max cadidates percentage.
+     */
     private TextView txtMaxNodeCandidatesPercentage;
+
+    /**
+     * Text view to display avg cadidates percentage.
+     */
     private TextView txtAvgNodeCandidatesPercentage;
+
+    /**
+     * Text view to display referees number.
+     */
     private TextView txtRefereesNumber;
+
+    /**
+     * Text view to display total algorithm time.
+     */
     private TextView txtTotalAlgorithmTime;
+
+    /**
+     * Text view to display min algorithm time.
+     */
     private TextView txtMinAlgorithmTime;
+
+    /**
+     * Text view to display max algorithm time.
+     */
     private TextView txtMaxAlgorithmTime;
+
+    /**
+     * Text view to display avg algorithm time.
+     */
     private TextView txtAvgAlgorithmTime;
+
+    /**
+     * Text view to display network size.
+     */
     private TextView txtNetworkSize;
+
+    /**
+     * Text view to display number of algorithm runs.
+     */
     private TextView txtAlgorithmRuns;
+
+    /**
+     * Text view to display number of algorithm winners.
+     */
     private TextView txtWinnersNumber;
 
-    //Progress dialog
+    /**
+     * Progress dialog.
+     */
     private ProgressDialog pDialog;
 
-    //Data from selects, default initialized
+    /**
+     * Network size to performance check.
+     */
     private int networkSize = Consts.ALGRITHM_PERFORMANCE_DEFAULT_NETWORK_SIZE;
 
-    //Wake lock
+    /**
+     * Wake lock to acquire.
+     */
     private PowerManager.WakeLock wakeLock = null;
+
+    /**
+     * Number of algorithm runs to performance check.
+     */
     private int algorithmRuns = Consts.ALGRITHM_PERFORMANCE_DEFAULT_ALGORITHM_RUNS;
 
+    /**
+     * Required empty public constructor.
+     */
     public AdvancedFragment() {
-        // Required empty public constructor
     }
 
 
+    /**
+     * Method to create and return the view hierarchy associated with the fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -104,6 +181,12 @@ public class AdvancedFragment extends Fragment {
         return v;
     }
 
+    /**
+     * Method to init spinner with values from string array.
+     * @param spinner
+     * @param arrayResItems
+     * @return
+     */
     private Spinner initSpinner(Spinner spinner, int arrayResItems) {
         if (spinner == null) {
             return null;
@@ -118,6 +201,9 @@ public class AdvancedFragment extends Fragment {
         return spinner;
     }
 
+    /**
+     * Method to handle spinner events.
+     */
     private void handleSpinnerEvents() {
         this.spinnerAlgorithmRuns.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -145,10 +231,17 @@ public class AdvancedFragment extends Fragment {
         });
     }
 
+    /**
+     * Method to validate performance check input params.
+     * @return
+     */
     private boolean validateAlgorithmParams() {
         return ((this.networkSize > 0) && (this.algorithmRuns > 0));
     }
 
+    /**
+     * Method to handle run performance button click.
+     */
     private void handleButtonsEvents() {
         btnRunPerformance.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -165,6 +258,9 @@ public class AdvancedFragment extends Fragment {
         });
     }
 
+    /**
+     * Method to clear performance results.
+     */
     private void clearPerformanceResults() {
         this.svResults.setVisibility(View.GONE);
         this.resultsLine.setVisibility(View.GONE);
@@ -181,6 +277,10 @@ public class AdvancedFragment extends Fragment {
         this.txtWinnersNumber.setText(Consts.BLANK_STRING_VALUE);
     }
 
+    /**
+     * Method to display performance results.
+     * @param output
+     */
     private void showPerformanceResults(PerformanceOutput output) {
         if (output == null) {
             return;
@@ -200,6 +300,9 @@ public class AdvancedFragment extends Fragment {
         this.resultsLine.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Method to acquire wake lock, run async task to run performance and release wake lock after performance check.
+     */
     private void runPerformance() {
         clearPerformanceResults();
         PerformanceInput input = new PerformanceInput(networkSize, algorithmRuns);
@@ -242,6 +345,10 @@ public class AdvancedFragment extends Fragment {
         }   //if
     }
 
+    /**
+     * Method to show progress dialog or update progress dialog text.
+     * @param message
+     */
     private void showOrUpdateDialog(String message) {
         if (TextUtils.isEmpty(message)) {
             return;
@@ -261,6 +368,9 @@ public class AdvancedFragment extends Fragment {
         }   //if
     }
 
+    /**
+     * Method to hide progress dialog.
+     */
     private void hideDialog() {
         if (pDialog == null) {
             return;
